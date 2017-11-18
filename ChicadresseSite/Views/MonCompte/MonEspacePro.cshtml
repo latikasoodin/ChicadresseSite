@@ -1,0 +1,242 @@
+﻿
+@{
+    ViewBag.Title = "MonEspacePro";
+    Layout = "~/Views/Shared/_BusinessLayout.cshtml";
+}
+
+<section class="my_location">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-9 col-sm-offset-3 col-xs-12">
+                <h3>Mon espace Pro</h3>
+            </div>
+            <div class="row col-lg-3 col-md-3 col-sm-3 col-xs-12 sidebar_list">
+                <ul class="list_new_one">
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_1"></i>
+                            Mon entreprise
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_2"></i>
+                            Mes Photos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_3"></i>
+                            Mes Videos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_4"></i>
+                            Ma Localisation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_5"></i>
+                            Questions Fréquentes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_6"></i>
+                            Mes Brochures
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_7"></i>
+                            Mes Mariages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="loclist_8"></i>
+                            Mes Mariages
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 sidebar_listt upbox">
+                <h4>Mon accès</h4>
+                <form class="form-inline bigform">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label for="Nomdutilisateur">Nom d’utilisateur</label>
+                        <input type="text" class="form-control" id="nom" placeholder="Le grand joalier" />
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label for="modi">Modifier mon mot de passe</label>
+                        <input type="text" class="form-control" id="modi" placeholder="Nouveau mot de passe" />
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label for="rep">&nbsp;</label>
+                        <input type="text" class="form-control" id="rep" placeholder="Repeter le  mot de passe" />
+                    </div>
+                    <div class="clearfix"></div>
+                    <button type="submit" class="btn btn-default btnenre">Enregistrer</button>
+                </form>
+                <div class="clearfix"></div>
+                <div class="bigform_second">
+                    <h4>Présentez-nous votre activité</h4>
+                    <form class="form-inline bigform">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="Nomdutilisateur">Nom de l’entreprise/enseigne </label>
+                            <input type="text" class="form-control" id="nom" placeholder="Le grand joalier" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Date de lancement/ création</label>
+                            <input type="text" class="form-control date_pkr" id="modi" placeholder="Nouveau mot de passe" data-provide="datepicker" />
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="rep">Activité</label>
+                            <select class="selectpicker" data-size="2">
+                                <option>En attente</option>
+                                <option>Confirmé</option>
+                            </select>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="bottom_box">
+                            <h6>Intéressé par apparaître  dans plusieurs catégories ? </h6>
+                            <button type="submit" class="btn btn-default btnrecomd">abonnez-vous à nos packs</button>
+                        </div>
+                        <div class="dest">
+                            <p>Décrivez votre entreprise en quelques lignes (Ecrire le texte à la 3ème personne.</p>
+                            <p>Ce descriptif sera révisé et apparaitra dans votre page vitrine sur le site).</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="editor">
+                            <h6>Présentez-nous votre activité</h6>
+                            <div id="txtEditor"></div>
+                        </div>
+                        <button type="submit" class="btn btn-default btnenre">Enregistrer</button>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+                <div class="bigform_third">
+                    <h4>Informations sur votre entreprise </h4>
+                    <form class="form-inline bigform">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="Nomdutilisateur">Pays </label>
+                            <input type="text" class="form-control" id="nom" placeholder="Le grand joalier" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Ville</label>
+                            <input type="text" class="form-control date_pkr" id="modi" placeholder="Nouveau mot de passe" data-provide="datepicker" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Address</label>
+                            <input type="text" class="form-control" id="modi" placeholder="Le grand joalier" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Téléphone fixe </label>
+                            <input type="text" class="form-control" id="modi" placeholder="" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Site Internet </label>
+                            <input type="text" class="form-control" id="modi" placeholder="" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Portable </label>
+                            <input type="text" class="form-control" id="modi" placeholder="" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">E-mail </label>
+                            <input type="text" class="form-control" id="modi" placeholder="" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 frmbtn">
+                            <button type="submit" class="btn btn-default btnenre">Enregistrer</button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="images/fb.jpg" class="media-object" style="width:43px">
+                                    </div>
+                                    <div class="media-body">
+                                        <input type="text" class="form-control" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="images/insta.png" class="media-object" style="width:43px">
+                                    </div>
+                                    <div class="media-body">
+                                        <input type="text" class="form-control" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="images/snap.png" class="media-object" style="width:43px">
+                                    </div>
+                                    <div class="media-body">
+                                        <input type="text" class="form-control" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="bigform_third">
+                    <h4>Coordonnées personnelles </h4>
+                    <p class="subhd">Personne à contacter dans votre entreprise</p>
+                    <form class="form-inline bigform">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="Nomdutilisateur">Nom*</label>
+                            <input type="text" class="form-control" id="nom" placeholder="Le grand joalier" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Prénom*</label>
+                            <input type="text" class="form-control date_pkr" id="modi" placeholder="Nouveau mot de passe" data-provide="datepicker" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Fonction</label>
+                            <input type="text" class="form-control" id="modi" placeholder="Le grand joalier" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">Téléphone portable*</label>
+                            <input type="text" class="form-control" id="modi" placeholder="" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="modi">E-mail </label>
+                            <input type="text" class="form-control" id="modi" placeholder="" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 frmbtn">
+                            <button type="submit" class="btn btn-default btnenre">Enregistrer</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

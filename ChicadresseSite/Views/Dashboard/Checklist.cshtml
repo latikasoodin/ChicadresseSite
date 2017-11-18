@@ -1,0 +1,310 @@
+﻿@model IEnumerable<DAL.Task>
+
+@{
+    ViewBag.Title = "Checklist";
+}
+
+@Styles.Render("~/Content/css")
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <section class="left_right_dash tech">
+            <div class="col-sm-9 no_left_pdg">
+                <div class="row_">
+                    <div class="ttl_box new_ttl">
+                        <h3><i class="vndr i_hotel_restaurant_166"></i> Vos prochaine teche a effectuer</h3>
+                        <a href="javascript:void(0);" class="pdf_btn">Telecharger PDF</a>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="list_dashbord">
+                        @foreach (var m in ViewBag.TaskTiming)
+                        {
+                            <div class="panel panel-default first_pannel">
+                                <!-- Default panel contents -->
+                                <!-- List group -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        @m.Timing
+                                    </h3>
+                                    <span>
+                                        @ViewBag.TotalTaskCompleted taches de @ViewBag.TaskCount effectuer
+                                        <a href="javascript:void(0);" class="span_btn" id="a-tool-modal">ajouter une tache</a>
+                                    </span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <ul class="list-group">
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.TimingId == m.TimingId)
+                                        {
+                                            <li class="list-group-item clearfix">
+                                                <a href="javascript:void">
+                                                    <h3><i class="rclock_icon"></i>@item.Title</h3>
+                                                </a>
+                                                <ul class="icn_rightlist">
+                                                    <li>
+                                                        <a href="@Url.Action("DeleteTask", "Dashboard", new { taskId = item.TaskId })"><i class="gst dlt"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#edit-tool-modal" data-toggle="modal" data-id=@item.TaskId class="open-EditTaskDialog"><i class="gst pencil"></i></a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="ad_box">
+                    <img src="images/ad_full.jpg" class="img-responsive" alt="" usemap="#Mapp" />
+                    <map name="Mapp" id="Mapp">
+                        <area alt="" title="" href="#" shape="rect" coords="690,62,835,27" />
+                    </map>
+                </div>
+
+            </div>
+            <div class="col-sm-3 padding-right">
+                <section class="ads_right_box">
+                    <a href="javascript:void(0);">
+                        <img src="images/jeff.jpg" class="img-responsive" />
+                    </a>
+                </section>
+
+                <section class="choos_color">
+                    <img src="images/ad4.jpg" class="img-responsive" usemap="#Map" />
+                    <map name="Map" id="Map">
+                        <area href="javascript:void(0);" shape="rect" coords="61,639,220,598" />
+                    </map>
+                </section>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+    </div>
+</div>
+
+<!-- Add New Task Modal -->
+<div class="modal fade" id="tool-modal" role="dialog">
+    <div class="modal-dialog" style="left:0%;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="header" style="min-height:20px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h2>Add New Task</h2>
+            </div>
+            <form id="frmToolLayer" name="frmToolLayer" class="pure-form pure-form-stacked" action="/Dashboard/ChecklistAddRun" target="frameToolLayer" method="post">
+                <div class="modal-body p20">
+                    <div class="pure-control-group mb10">
+                        <div class="pure-ui">
+                            <label for="BudgetCateg" class="pure-u-1-4">Task <span class="required">*</span></label>
+                            <input type="text" name="Nombre" id="Nombre" size="40" maxlength="80">
+                        </div>
+                    </div>
+
+                    <label for="Period">Timing <span class="required">*</span></label>
+
+                    <div class="select-fake pure-u-1 mb20" style="max-width:498px;">
+                        <select name="Period" id="Period" class="pure-u-1" style="max-width:498px;">
+                            <option value="0">-- Unclassified --</option>
+                            <option value="1">From 10 to 12 months</option>
+                            <option value="2">From 7 to 9 months</option>
+                            <option value="3">From 4 to 6 months</option>
+                            <option value="4">From 2 to 3 months</option>
+                            <option value="5">The last month</option>
+                            <option value="6">2 weeks</option>
+                            <option value="7">Last week</option>
+                            <option value="8">Last day</option>
+                            <option value="9">Wedding day</option>
+                            <option value="10">After the wedding</option>
+                        </select>
+                    </div>
+
+                    <label for="Categoria" class="pure-u-1-4">Category <span class="required">*</span></label>
+                    <div class="select-fake pure-u-1" style="max-width:498px;">
+                        <select name="Categoria" id="CategoriaCreated" class="pure-u-1" style="max-width:498px;">
+                            <option value="0">-- Unclassified --</option>
+                            <option value="13">Planning</option>
+                            <option value="14">Legal processes</option>
+                            <option value="3">Ceremony</option>
+                            <option value="1">Reception</option>
+                            <option value="12">Music</option>
+                            <option value="6">Wedding invitations</option>
+                            <option value="19">Wedding favours</option>
+                            <option value="4">Flowers and Decoration</option>
+                            <option value="5">Photography and Video</option>
+                            <option value="15">Transport</option>
+                            <option value="8">Jewellery</option>
+                            <option value="16">Bridal accessories</option>
+                            <option value="20">Groom's accessories</option>
+                            <option value="2">Health and beauty</option>
+                            <option value="11">Honeymoon</option>
+                            <option value="9">Gift list</option>
+                            <option value="18">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="pt10">
+                        <label for="Notas" class="dblock">Description</label>
+                        <textarea rows="6" class="app-tools-checklist-new-desc pure-input-1 mt10" name="Notas" id="Notas" style="max-width:498px;"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary btn-medium" value="Add&nbsp;Task">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- Edit Task Modal -->
+<div class="modal fade" id="edit-tool-modal" role="dialog">
+    <div class="modal-dialog" style="left:0%;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="header" style="min-height:20px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h2>Edit Task</h2>
+            </div>
+            <form id="frmToolLayer" name="frmToolLayer" class="pure-form pure-form-stacked" action="/Dashboard/ChecklistEditRun/" target="frameToolLayer" method="post">
+                <div class="modal-body p20">
+                    <div class="pure-control-group mb10">
+                        <div class="pure-ui">
+                            <label for="BudgetCateg" class="pure-u-1-4">Task <span class="required">*</span></label>
+                            <input type="text" name="Nombre" id="Nombre" size="40" maxlength="80">
+                            @Html.Hidden("taskId")
+                        </div>
+                    </div>
+
+                    <label for="Period">Timing <span class="required">*</span></label>
+
+                    <div class="select-fake pure-u-1 mb20" style="max-width:498px;">
+                        <select name="Period" id="Period" class="pure-u-1" style="max-width:498px;">
+                            <option value="0">-- Unclassified --</option>
+                            <option value="1">From 10 to 12 months</option>
+                            <option value="2">From 7 to 9 months</option>
+                            <option value="3">From 4 to 6 months</option>
+                            <option value="4">From 2 to 3 months</option>
+                            <option value="5">The last month</option>
+                            <option value="6">2 weeks</option>
+                            <option value="7">Last week</option>
+                            <option value="8">Last day</option>
+                            <option value="9">Wedding day</option>
+                            <option value="10">After the wedding</option>
+                        </select>
+                    </div>
+
+                    <label for="Categoria" class="pure-u-1-4">Category <span class="required">*</span></label>
+                    <div class="select-fake pure-u-1" style="max-width:498px;">
+                        <select name="Categoria" id="CategoriaCreated" class="pure-u-1" style="max-width:498px;">
+                            <option value="0">-- Unclassified --</option>
+                            <option value="13">Planning</option>
+                            <option value="14">Legal processes</option>
+                            <option value="3">Ceremony</option>
+                            <option value="1">Reception</option>
+                            <option value="12">Music</option>
+                            <option value="6">Wedding invitations</option>
+                            <option value="19">Wedding favours</option>
+                            <option value="4">Flowers and Decoration</option>
+                            <option value="5">Photography and Video</option>
+                            <option value="15">Transport</option>
+                            <option value="8">Jewellery</option>
+                            <option value="16">Bridal accessories</option>
+                            <option value="20">Groom's accessories</option>
+                            <option value="2">Health and beauty</option>
+                            <option value="11">Honeymoon</option>
+                            <option value="9">Gift list</option>
+                            <option value="18">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="pt10">
+                        <label for="Notas" class="dblock">Description</label>
+                        <textarea rows="6" class="app-tools-checklist-new-desc pure-input-1 mt10" name="Notas" id="Notas" style="max-width:498px;"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary btn-medium" value="Edit&nbsp;Task">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#a-tool-modal").click(function () {
+            $("#tool-modal").modal();
+        });
+
+        $('a').click(function () {
+            debugger;
+            $(this).find('i').toggleClass('right_icon rclock_icon');
+
+            var icon = $(this).find('i')[0].className;
+            var checkStatus = false;
+            if (icon == "right_icon")
+                checkStatus = true;
+            $.ajax({
+                url: '@Url.Action("SetTaskCompletionStatus", "Dashboard")',
+                type: 'POST',
+                dataType: "json",
+                data: { taskId: taskId },
+                success: function (result) {
+                    debugger;
+                    $(".modal-body #Nombre").val(result.Title);
+                    $(".modal-body #Period").val(result.TimingId);
+                    $(".modal-body #Categoria").val(result.CategoryId);
+                    $(".modal-body #Notas").val(result.Description);
+
+                    $(".modal-body #taskId").val(result.TaskId);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+
+        $(".progress-bar").css("width", '@ViewBag.TotalTaskCompleted');
+    });
+
+    $(document).on("click", ".open-EditTaskDialog", function () {
+        var taskId = $(this).data('id');
+
+        $.ajax({
+            url: '@Url.Action("ChecklistGetTaskById", "Dashboard")',
+            type: 'GET',
+            dataType: "json",
+            data: { taskId: taskId },
+            success: function (result) {
+                debugger;
+                $(".modal-body #Nombre").val(result.Title);
+                $(".modal-body #Period").val(result.TimingId);
+                $(".modal-body #Categoria").val(result.CategoryId);
+                $(".modal-body #Notas").val(result.Description);
+
+                $(".modal-body #taskId").val(result.TaskId);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+

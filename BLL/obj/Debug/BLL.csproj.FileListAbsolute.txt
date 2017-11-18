@@ -1,0 +1,6 @@
+C:\latika\ChicadresseSite\BLL\bin\Debug\BLL.dll
+C:\latika\ChicadresseSite\BLL\bin\Debug\BLL.pdb
+C:\latika\ChicadresseSite\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\latika\ChicadresseSite\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\latika\ChicadresseSite\BLL\obj\Debug\BLL.dll
+C:\latika\ChicadresseSite\BLL\obj\Debug\BLL.pdb

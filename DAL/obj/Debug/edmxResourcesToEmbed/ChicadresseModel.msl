@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ChicadressModelStoreContainer" CdmEntityContainer="ChicadressEntities">
+    <EntitySetMapping Name="Award_Category">
+      <EntityTypeMapping TypeName="ChicadressModel.Award_Category">
+        <MappingFragment StoreEntitySet="Award_Category">
+          <ScalarProperty Name="AwardId" ColumnName="AwardId" />
+          <ScalarProperty Name="AwardType" ColumnName="AwardType" />
+          <ScalarProperty Name="ReviewRequired" ColumnName="ReviewRequired" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Budgets">
+      <EntityTypeMapping TypeName="ChicadressModel.Budget">
+        <MappingFragment StoreEntitySet="Budget">
+          <ScalarProperty Name="BudgetId" ColumnName="BudgetId" />
+          <ScalarProperty Name="BudgetConcept" ColumnName="BudgetConcept" />
+          <ScalarProperty Name="EstimatedCost" ColumnName="EstimatedCost" />
+          <ScalarProperty Name="FinalCost" ColumnName="FinalCost" />
+          <ScalarProperty Name="BudgetCategoryId" ColumnName="BudgetCategoryId" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Budget_Category">
+      <EntityTypeMapping TypeName="ChicadressModel.Budget_Category">
+        <MappingFragment StoreEntitySet="Budget_Category">
+          <ScalarProperty Name="BudgetCategoryId" ColumnName="BudgetCategoryId" />
+          <ScalarProperty Name="BudgetCategory" ColumnName="BudgetCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Catering_Policy">
+      <EntityTypeMapping TypeName="ChicadressModel.Catering_Policy">
+        <MappingFragment StoreEntitySet="Catering_Policy">
+          <ScalarProperty Name="CateringId" ColumnName="CateringId" />
+          <ScalarProperty Name="CateringPolicy" ColumnName="CateringPolicy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Event_Spaces">
+      <EntityTypeMapping TypeName="ChicadressModel.Event_Spaces">
+        <MappingFragment StoreEntitySet="Event_Spaces">
+          <ScalarProperty Name="EventSpaceId" ColumnName="EventSpaceId" />
+          <ScalarProperty Name="EventSpace" ColumnName="EventSpace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guest_Details">
+      <EntityTypeMapping TypeName="ChicadressModel.Guest_Details">
+        <MappingFragment StoreEntitySet="Guest_Details">
+          <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guest_Table">
+      <EntityTypeMapping TypeName="ChicadressModel.Guest_Table">
+        <MappingFragment StoreEntitySet="Guest_Table">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="ChicadressModel.Image">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+          <ScalarProperty Name="Image1" ColumnName="Image" />
+          <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message_Status">
+      <EntityTypeMapping TypeName="ChicadressModel.Message_Status">
+        <MappingFragment StoreEntitySet="Message_Status">
+          <ScalarProperty Name="MessageStatusId" ColumnName="MessageStatusId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="ChicadressModel.Message">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="Message1" ColumnName="Message" />
+          <ScalarProperty Name="MessageStatusId" ColumnName="MessageStatusId" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="ChicadressModel.Question">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="Question1" ColumnName="Question" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Response_Template">
+      <EntityTypeMapping TypeName="ChicadressModel.Response_Template">
+        <MappingFragment StoreEntitySet="Response_Template">
+          <ScalarProperty Name="TempId" ColumnName="TempId" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="FilesAttached" ColumnName="FilesAttached" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="ChicadressModel.Review">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+          <ScalarProperty Name="ReviewDescription" ColumnName="ReviewDescription" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="ChicadressModel.Table">
+        <MappingFragment StoreEntitySet="Tables">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="NoOfChairs" ColumnName="NoOfChairs" />
+          <ScalarProperty Name="ChairAvailable" ColumnName="ChairAvailable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Role">
+      <EntityTypeMapping TypeName="ChicadressModel.User_Role">
+        <MappingFragment StoreEntitySet="User_Role">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="ChicadressModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendors">
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venue_list">
+      <EntityTypeMapping TypeName="ChicadressModel.Venue_list">
+        <MappingFragment StoreEntitySet="Venue_list">
+          <ScalarProperty Name="VenueId" ColumnName="VenueId" />
+          <ScalarProperty Name="VenueLocation" ColumnName="VenueLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserActivations">
+      <EntityTypeMapping TypeName="ChicadressModel.UserActivation">
+        <MappingFragment StoreEntitySet="UserActivation">
+          <ScalarProperty Name="AcitivationCode" ColumnName="AcitivationCode" />
+          <ScalarProperty Name="ActivationId" ColumnName="ActivationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registers">
+      <EntityTypeMapping TypeName="ChicadressModel.Register">
+        <MappingFragment StoreEntitySet="Register">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="NoOfGuest" ColumnName="NoOfGuest" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+          <ScalarProperty Name="Groom" ColumnName="Groom" />
+          <ScalarProperty Name="Bride" ColumnName="Bride" />
+          <ScalarProperty Name="MarriageDate" ColumnName="MarriageDate" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="StateCity" ColumnName="StateCity" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Task_Timing">
+      <EntityTypeMapping TypeName="ChicadressModel.Task_Timing">
+        <MappingFragment StoreEntitySet="Task_Timing">
+          <ScalarProperty Name="Timing" ColumnName="Timing" />
+          <ScalarProperty Name="TimingId" ColumnName="TimingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks_Category">
+      <EntityTypeMapping TypeName="ChicadressModel.Tasks_Category">
+        <MappingFragment StoreEntitySet="Tasks_Category">
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Business_User">
+      <EntityTypeMapping TypeName="ChicadressModel.Business_User">
+        <MappingFragment StoreEntitySet="Business_User">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="BusinessDescription" ColumnName="BusinessDescription" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Webpage" ColumnName="Webpage" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ChicadressModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="MyPartnerPic" ColumnName="MyPartnerPic" />
+          <ScalarProperty Name="MyPic" ColumnName="MyPic" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="NoOfGuest" ColumnName="NoOfGuest" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+          <ScalarProperty Name="ActivationId" ColumnName="ActivationId" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="MarriageDate" ColumnName="MarriageDate" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="StateCity" ColumnName="StateCity" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Task">
+      <EntityTypeMapping TypeName="ChicadressModel.User_Task">
+        <MappingFragment StoreEntitySet="User_Task">
+          <ScalarProperty Name="CompletionStatus" ColumnName="CompletionStatus" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_FavouriteBusinessUser">
+      <EntityTypeMapping TypeName="ChicadressModel.User_FavouriteBusinessUser">
+        <MappingFragment StoreEntitySet="User_FavouriteBusinessUser">
+          <ScalarProperty Name="Favourite" ColumnName="Favourite" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="ChicadressModel.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="TimeMonth" ColumnName="TimeMonth" />
+          <ScalarProperty Name="BusinessUserId" ColumnName="BusinessUserId" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CompletionStatus" ColumnName="CompletionStatus" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="TimingId" ColumnName="TimingId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

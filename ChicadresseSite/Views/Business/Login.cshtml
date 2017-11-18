@@ -1,0 +1,527 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/css/vendors.css" rel="stylesheet" media="all" />
+
+</head>
+<body>
+
+    @using (Html.BeginForm("Login", "Business", FormMethod.Post))
+    {
+        <fieldset>
+            @Html.AntiForgeryToken()
+
+            <div class="wsmenucontainer clearfix">
+                <div class="overlapblackbg"></div>
+                <div class="wsmobileheader clearfix">
+                    <a id="wsnavtoggle" class="animated-arrow"><span></span></a>
+                    <a class="smallogo">
+                        <img src="Webslide_files/sml-logo.png" alt="" width="87">
+                    </a>
+                    <a class="callusicon" href="tel:" title=""><span class="fa fa-phone"></span></a>
+                </div>
+
+                <div class="headerfull">
+                    <div class="wsmain">
+                        <div class="smllogo">
+                            <a href="#">
+                                <i class="logo"></i>
+                            </a>
+                        </div>
+                        <nav class="wsmenu clearfix blogin">
+                            <ul class="mobile-sub wsmenu-list pullright">
+                                <li>
+                                    <span class="wsmenu-click"></span><a href="#" class="hvr-overline-from-center">Business login</a>
+                                </li>
+                                <li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="#" class="hvr-overline-from-center">Guided tour</a>
+                                </li>
+                                <li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="#" class="hvr-overline-from-center">Download App</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <header class="admin-access-header">
+                    <div class="wrapper pure-g">
+                        <div class="container">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 pure-u-2-3">
+                                <h1 class="admin-access-header-title">Make your business grow with Weddingspot.co.uk!</h1>
+                                <ul class="admin-access-header-list">
+                                    <li class="admin-access-header-list-item">
+                                        Receive enquiries from couples interested in your services.
+                                    </li>
+                                    <li class="admin-access-header-list-item">
+                                        Attract new customers and multiply the success of your business.
+                                    </li>
+                                    <li class="admin-access-header-list-item">
+                                        More than 10,000 suppliers already trust in us.
+                                    </li>
+                                </ul>
+                                @Html.ActionLink("Sign up free", "SignupStep1", "Business", new { @class = "admin-access-header-cta" })
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pure-u-1-3">
+                                <form class="admin-access-header-form" name="frmAcceso" action="" method="post">
+                                    <p class="admin-access-header-form-title">Business login</p>
+                                    <div class="admin-access-header-form-inputs">
+                                        <input class="admin-access-header-input icon icon-user" name="Username" placeholder="Username" value="" type="text">
+                                        <input class="admin-access-header-input icon icon-password" name="Password" placeholder="Password" type="password">
+                                    </div>
+                                    <input class="admin-access-header-submit" value="Log In" type="submit">
+                                    <a class="admin-access-header-link app-va-open-modal" data-url="">
+                                        Forgotten your password?
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="wrapper">
+                    <section class="admin-access-steps">
+                        <div class="wrapper pure-g">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pure-u-1-3">
+                                        <div class="pure-s">
+                                            <div class="admin-access-steps-item">
+                                                <span class="admin-access-steps-icon icon-search"></span>
+                                                <p class="admin-access-steps-title">Couples find you</p>
+                                                <p class="admin-access-steps-description">
+                                                    They fill in a quote request with their personal information and details of the service they are interested in.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pure-u-1-3">
+                                        <div class="pure-s">
+                                            <div class="admin-access-steps-item">
+                                                <span class="admin-access-steps-icon icon-sol"></span>
+                                                <p class="admin-access-steps-title">You receive enquiries</p>
+                                                <p class="admin-access-steps-description">
+                                                    You could reply from your email, but we strongly recommend you to use your business admin. It's much easier.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pure-u-1-3">
+                                        <div class="pure-s">
+                                            <div class="admin-access-steps-item">
+                                                <span class="admin-access-steps-icon icon-users"></span>
+                                                <p class="admin-access-steps-title">You get one more wedding</p>
+                                                <p class="admin-access-steps-description">
+                                                    You contact couples who are interested in your services and therefore you get a valuable new client.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="admin-access-benefict">
+                        <div class="wrapper">
+                            <div class="container">
+                                <div class="row">
+                                    <h2 class="admin-landing-element-title">What do we offer you?</h2>
+                                    <div class="pure-g">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <ul class="pure-u-11-24 mt20">
+                                                <li class="admin-access-benefict-item">
+                                                    <p class="admin-access-benefict-item-description icon-admin-access icon-admin-access-photo">A complete shopfront where thousands of couples interested in your services will see you</p>
+                                                </li>
+                                                <li class="admin-access-benefict-item">
+                                                    <p class="admin-access-benefict-item-description icon-admin-access icon-admin-access-voice">A communication and marketing platform specialised in the online weddings sector</p>
+                                                </li>
+                                                <li class="admin-access-benefict-item">
+                                                    <p class="admin-access-benefict-item-description icon-admin-access icon-admin-access-user">Full team of professionals entirely at your service to help you make your business grow</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <img class="pure-u-13-24" src="~/Content/images/gen_access-benefict_en-GB.png" height="100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="admin-access-menu">
+                        <div class="wrapper">
+                            <div class="container">
+                                <div class="row">
+                                    <h2 class="admin-landing-element-title">Your business admin</h2>
+                                    <div class="pure-g">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="pure-u-13-24 text-center">
+                                                <img src="~/Content/images/gen_access-menu_en-GB.png">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <ul class="pure-u-11-24 mt20">
+                                                <li class="admin-access-menu-item">
+                                                    <p class="admin-access-menu-item-description icon icon-tool">It is a simple tool to manage your shopfront, upload photos, videos, promotions...</p>
+                                                </li>
+                                                <li class="admin-access-menu-item">
+                                                    <p class="admin-access-menu-item-description icon icon-envelope">You will have a safe and efficient system for sorting, searching and respond to your enquiries</p>
+                                                </li>
+                                                <li class="admin-access-menu-item">
+                                                    <p class="admin-access-menu-item-description icon icon-star">Plus, you'll be able to request reviews to the brides and grooms, check your statistics and much more</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="admin-landing-element-footer">
+                        <div class="container">
+                            <div class="row">
+                                <p class="admin-landing-element-footer-title">Make your business grow with Weddingspot.co.uk!</p>
+                                @Html.ActionLink("Sign up free", "SignupStep1", "Business", new { @class = "admin-landing-element-footer-cta" })
+                                <div class="admin-landing-element-footer-nav">
+                                    <div class="wrapper overflow">
+                                        <a class="fright admin-landing-element-footer-nav-button fa fa-o-angle-right" href="">
+                                            Guided tour
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <section class="top_footer_box">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-3">
+                                        <ul class="unstyled">
+                                            <h3>Wedding Venues</h3>
+                                            <li>
+                                                <a href="#">Mansion weddings <span>10</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding venue hotels <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding in restaurant <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Catering for a wedding <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding castle venues <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Unique venue <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Barn wedding <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Town halls for hire <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Conference centers <span>46</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <ul class="unstyled">
+                                            <h3>Wedding Suppliers</h3>
+                                            <li>
+                                                <a href="#">Wedding invitations <span>10</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Favors for weddings <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Photographer for wedding <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding videographer <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding music for ceremony <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Car for wedding <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Marquee rental <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding entertainment <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding flower shops <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Weddings planner <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding and honeymoon <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding decorating <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding cakes <span>46</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <ul class="unstyled">
+                                            <h3>Brides</h3>
+                                            <li>
+                                                <a href="#">Bridal dresses <span>10</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding accessories <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding jewellery <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding hair <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Wedding make up <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Evening dresses<span>46</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <ul class="unstyled">
+                                            <h3>Grooms</h3>
+                                            <li>
+                                                <a href="#">Wedding suits <span>10</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Men's accessories <span>46</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Men's beauty <span>46</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--footer start from here-->
+                    <footer class="aftlgn">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 footerleft ">
+                                    <h6 class="heading7">Information</h6>
+                                    <ul class="footer-ul">
+                                        <li>
+                                            <a href="#">Contact us</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Legal terms</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Register your business</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">About us</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Cookies policy</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 paddingtop-bottom">
+                                    <h6 class="heading7">Download the app</h6>
+                                    <ul class="footer-ul">
+                                        <li>
+                                            <a href="#">
+                                                <img src="~/Content/images/apple.png" class="img-responive appimg" />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="~/Content/images/googleplay.png" class="img-responive appimg" />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                                    <h6 class="heading7">Follow us on</h6>
+                                    <ul class="footer-ul">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i> Facebook
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                    <!--footer start from here-->
+                    <div class="copyright">
+                        <div class="container">
+                            <div class="col-md-4">
+                                <p>© 2016 - All Rights with aaaa</p>
+                            </div>
+                            <div class="col-md-8">
+                                <ul class="bottom_ul">
+                                    <li>
+                                        <a href="#">My wedding</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding Venues</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding Suppliers</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Brides</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Grooms</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding Tips</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <script src="~/Content/js/jquery.js"></script>
+            <script type="text/javascript" src="~/Content/js/bootstrap.js"></script>
+            <script type="text/javascript" src="~/Content/js/bootstrap-select.min.js"></script>
+            <script type="text/javascript" src="~/Content/js/menu.js"></script>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel">Add telephone</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">Add telephone:</label>
+                                    <input type="text" class="form-control" id="recipient-name">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btnlgn">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel">Add mobile number</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">Add mobile number:</label>
+                                    <input type="text" class="form-control" id="recipient-name">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btnlgn">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel">Add mailing address</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">Add mailing address:</label>
+                                    <input type="email" class="form-control" id="recipient-name">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btnlgn">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel">Add companions</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">Add companions:</label>
+                                    <textarea class="form-control" cols="3" rows="2"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btnlgn">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    }
+    
+</body>
+</html>

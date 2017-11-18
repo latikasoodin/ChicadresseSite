@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/css/dtp.css" rel="stylesheet">
+    <link href="~/Content/css/vendors.css" rel="stylesheet" media="all" />
+    <link href="~/Content/css/editor.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="wsmenucontainer clearfix">
+        <div class="overlapblackbg"></div>
+        <div class="wsmobileheader clearfix">
+            <a id="wsnavtoggle" class="animated-arrow"><span></span></a>
+            <a class="smallogo">
+                <img src="~/Content/Webslide_files/sml-logo.png" alt="" width="87">
+            </a>
+            <a class="callusicon" href="tel:" title=""><span class="fa fa-phone"></span></a>
+        </div>
+
+        <div class="headerfull">
+            <div class="wsmain">
+                <div class="smllogo">
+                    <a href="#">
+                        <i class="logo"></i>
+                    </a>
+                </div>
+                <nav class="wsmenu clearfix blogin">
+                    <ul class="mobile-sub wsmenu-list pullright">
+                        <li>
+                            <span class="wsmenu-click"></span><a href="#" class="hvr"><img src="~/Content/images/blue_mail.png" class="img-responsive mailprofile" /></a>
+                        </li>
+                        <li>
+                            <span class="wsmenu-click"></span>
+                            <a href="#" class="">
+                                <span class="profilename">Bonjour, Mohamed</span>
+                                <img src="~/Content/images/profile.png" class="profileimg img-responsive" />
+                            </a>
+                        </li>
+                        <li>
+                            <span class="wsmenu-click"></span>
+                            <a href="#" class="hvrsetting"><i class="static_icon_2"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <header class="admin-access-header new_admin_header">
+            <div class="wrapper pure-g">
+                <div class="container">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 pure-u-2-3">
+
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="wrapper">
+            <section class="new_list">
+                <div class="container">
+                    <div class="row">
+                        <ul class="new_list_five">
+                            <li>
+                                <a href="@Url.Action("MonCompte","Business")"><i class="static_icon"></i>Mon compte</a>
+                            </li>
+                            <li class="active">
+                                <a href="javascript:void(0);">
+                                    <i class="static_icon_2"></i>
+                                    Mon espace pro
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <i class="static_icon_3"></i>
+                                    Ma vitrine
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <i class="static_icon_4"></i>
+                                    recommandations
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <i class="static_icon_5"></i>
+                                    <i class="badge">10</i>
+                                    Messagerie
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            @RenderBody()
+
+            <section class="top_footer_box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <ul class="unstyled">
+                                    <h3>Wedding Venues</h3>
+                                    <li>
+                                        <a href="#">Mansion weddings <span>10</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding venue hotels <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding in restaurant <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Catering for a wedding <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding castle venues <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Unique venue <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Barn wedding <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Town halls for hire <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Conference centers <span>46</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="unstyled">
+                                    <h3>Wedding Suppliers</h3>
+                                    <li>
+                                        <a href="#">Wedding invitations <span>10</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Favors for weddings <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Photographer for wedding <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding videographer <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding music for ceremony <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Car for wedding <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Marquee rental <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding entertainment <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding flower shops <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Weddings planner <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding and honeymoon <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding decorating <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding cakes <span>46</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="unstyled">
+                                    <h3>Brides</h3>
+                                    <li>
+                                        <a href="#">Bridal dresses <span>10</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding accessories <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding jewellery <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding hair <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding make up <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Evening dresses<span>46</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="unstyled">
+                                    <h3>Grooms</h3>
+                                    <li>
+                                        <a href="#">Wedding suits <span>10</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Men's accessories <span>46</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Men's beauty <span>46</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--footer start from here-->
+            <footer class="aftlgn newfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 footerleft ">
+
+                        </div>
+                        <div class="col-md-4 col-sm-4 paddingtop-bottom">
+
+                        </div>
+                        <div class="col-md-3 col-sm-6 paddingtop-bottom">
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/Content/js/jquery.js"></script>
+    <script type="text/javascript" src="~/Content/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Content/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/menu.js"></script>
+    <script src="~/Content/js/dtp.js"></script>
+
+    <script src="~/Content/js/editor.js"></script>
+    <script type="text/javascript">
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d'
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtEditor").Editor();
+        });
+    </script>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add telephone</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Add telephone:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btnlgn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add mobile number</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Add mobile number:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btnlgn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add mailing address</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Add mailing address:</label>
+                            <input type="email" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btnlgn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add companions</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Add companions:</label>
+                            <textarea class="form-control" cols="3" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btnlgn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

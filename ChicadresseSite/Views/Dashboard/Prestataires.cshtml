@@ -1,0 +1,127 @@
+﻿@model IEnumerable<DAL.Business_User>
+
+@{
+    ViewBag.Title = "Prestataires";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <section class="left_right_dash presti">
+            <div class="col-sm-9 no_left_pdg">
+                <div class="ttl_box">
+                    <h3><i class="gst i_live_contestt"></i> Vos prestaires favoris</h3>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-3">
+                            <div class="dash_box_main">
+                                <div class="header">
+                                    <figure class="border-bottom">
+                                        <a href="">
+                                            <img class="gen-tool-icon img-responsive" src="~/Content/images/coup_1.jpg" />
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="p10">
+                                    <p class="">
+                                        @item.ContactPerson
+                                        <i class="gst dlt"></i>
+                                    </p>
+                                    <small>@item.City, @item.Country</small>
+                                    <span class="providers-name pure-u-1">
+                                        <ul class="star_rating">
+                                            <li>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="active">
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                        <a href="">DEMANDER UN DEVIS</a>   @*Ask for a quote*@
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    }   
+                    <div class="col-sm-3">
+                        <div class="dash_box_main">
+                            <div class="header">
+                                <figure class="border-bottom">
+                                    <a href="">
+                                        <img class="gen-tool-icon img-responsive" src="~/Content/images/coup_1.jpg" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="p10">
+                                <p class="">
+                                    Florista
+                                    <i class="gst dlt"></i>
+                                </p>
+                                <small>Marrakech, Maroc</small>
+                                <span class="providers-name pure-u-1">
+                                    <ul class="star_rating">
+                                        <li>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="active">
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                    <a href="">DEMANDER UN DEVIS</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ad_box">
+                    <img src="~/Content/images/ad_full.jpg" class="img-responsive" alt="" usemap="#Mapp" />
+                    <map name="Mapp" id="Mapp">
+                        <area alt="" title="" href="#" shape="rect" coords="690,62,835,27" />
+                    </map>
+                </div>
+
+            </div>
+            <div class="col-sm-3 padding-right">
+                <section class="ads_right_box">
+                    <a href="javascript:void(0);">
+                        <img src="~/Content/images/jeff.jpg" class="img-responsive" />
+                    </a>
+                </section>
+
+                <section class="choos_color">
+                    <img src="~/Content/images/ad4.jpg" class="img-responsive" usemap="#Map" />
+                    <map name="Map" id="Map">
+                        <area href="javascript:void(0);" shape="rect" coords="61,639,220,598" />
+                    </map>
+                </section>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+    </div>
+</div>
+
+
+

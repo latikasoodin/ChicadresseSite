@@ -1,0 +1,695 @@
+﻿@model DAL.Business_User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignupStep1</title>
+    
+    @Styles.Render("~/Content/css")
+</head>
+<body class="layout-simple-extendeds">
+    <div class="wsmenucontainer clearfix">
+        <div class="overlapblackbg"></div>
+        <div class="headerfull">
+            <div class="wsmain">
+                <div class="smllogo">
+                    <a href="#">
+                        <i class="logo"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+
+            <div class="emp-alta">
+                <div class="vendors-signup-header">
+                    <img style="width: 100%;" src="../../images/header-signup-vendors.jpg">
+                    <div class="vendors-signup-header-content-image">
+                        <h1 class="vendors-signup-header-content-image-title">Register Free with </h1>
+                        <p class="mt10 vendors-signup-header-content-image-text">Please fill in this form and quickly enjoy the free services we offer you.</p>
+                    </div>
+                </div>
+
+                <div class="vendors-signup-steps">
+                    <div class="progress-steps">
+                        <div class="complete">
+                            <span>1</span>
+                            <hr>
+                        </div>
+                        <div>
+                            <span>2</span>
+                            <hr>
+                        </div>
+                        <div>
+                            <span>3</span>
+                            <hr>
+                        </div>
+                        <div>
+                            <span>4</span>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="progress-steps-ui">
+                        <span>General information</span>
+                        <span>Photo gallery</span>
+                        <span>Details</span>
+                        <span>Promotions</span>
+                    </div>
+                </div>
+
+                <form name="frmEmpresa" id="frmEmpresa" class="pure-form pure-form-aligned" action="" method="post">
+                    <input name="sToken" value="" type="hidden">
+                    <div class="mt30">
+                        <h3 class="vendors-sign-up-title-box">Login information</h3>
+                    </div>
+                    <div class="pure-g">
+                        <div class="vendors-signup-box p30">
+                            <div class="pure-u-5-10">
+                                <div class="pure-g mb5">
+                                    <input class="pure-u-1 form-input form-input-name" placeholder="Username *" name="Username" maxlength="10" autocomplete="off" tabindex="1" type="text">
+                                    @Html.ValidationMessageFor(model => model.Username)
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="pure-u-1 form-input form-input-password" placeholder="Password *" name="Password" maxlength="20" autocomplete="off" tabindex="2" type="password">
+                                    @Html.ValidationMessageFor(model => model.Password)
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="pure-u-1 form-input form-input-password" placeholder="Confirm password *" name="ConfirmPassword" maxlength="20" autocomplete="off" tabindex="3" type="password">
+                                    @Html.ValidationMessageFor(model => model.Password)
+                                </div>
+                            </div>
+                            <div class="pure-u-4-10 fright">
+                                <div class="pure-u-9-10 vendors-signup-notice blue fright">
+                                    <p class="color-grey m0">
+                                        <small>
+                                            These
+                                            are the username and password needed to access your personal menu.
+                                            Username must contain a minimum of 5 characters. Password must contain a
+                                            minimum of 6 characters and is case sensitive.
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt30">
+                        <h3 class="vendors-sign-up-title-box">Contact details</h3>
+                    </div>
+                    <div class="pure-g">
+                        <div class="vendors-signup-box p30">
+                            <div class="pure-u-5-10">
+                                <div class="pure-g mb5">
+                                    <input class="form-input form-input-name pure-u-1" name="ContactPerson" placeholder="Contact person *" tabindex="4" type="text">
+                                    @Html.ValidationMessageFor(model => model.ContactPerson)
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="form-input form-input-email pure-u-1" name="Email" placeholder="Email  *" tabindex="5" type="email">
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="form-input form-input-phone pure-u-1" name="Telephone" placeholder="Telephone *" tabindex="6" type="tel">
+                                    @Html.ValidationMessageFor(model => model.Telephone)
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="form-input form-input-mobile pure-u-1" name="TelefonoMovil" placeholder="Mobile number" tabindex="7" type="tel">
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="form-input form-input-fax pure-u-1" name="Fax" placeholder="Fax" tabindex="8" type="tel">
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="form-input form-input-web pure-u-1" name="Web" placeholder="Webpage" tabindex="9" type="text">
+                                </div>
+                            </div>
+                            <div class="pure-u-4-10 fright">
+                                <div class="pure-u-9-10 vendors-signup-notice blue fright">
+                                    <p class="color-grey small m0">Enquiries from interested users and news about  will be sent to this email address.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt30">
+                        <h3 class="vendors-sign-up-title-box">Your company</h3>
+                    </div>
+                    <div class="pure-g">
+                        <div class="vendors-signup-box p30">
+                            <div class="pure-u-5-10">
+                                <div class="pure-g mb5">
+                                    <div class="pure-u-4-5 select-fake mb10">
+                                        <input name="Pais" value="247" type="hidden">
+                                        <select class="pure-u-1" id="PaisDestino" tabindex="10" name="Cntry">
+                                            <option selected="selected" value="">United Kingdom</option>
+                                            <option value="">Spain</option>
+                                            <option value="">France</option>
+                                            <option value="">Italy</option>
+                                            <option value="">Portugal</option>
+                                            <option value="">India</option>
+                                            <option value="">Mexico</option>
+                                            <option value="">Chile</option>
+                                            <option value="">Argentina</option>
+                                            <option value="">Brazil</option>
+                                            <option value="">Colombia</option>
+                                            <option value="">Peru</option>
+                                            <option value="">Uruguay</option>
+                                            <option value="">Canada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="pure-g mb5">
+                                    <div class="drop-wrapper pure-u-1">
+                                        <input class="app-suggest-provincia-id-default" name="Provincia" type="hidden">
+                                        <input class="app-suggest-poblacion-id-default" name="Poblacion" type="hidden">
+                                        <input class="mt5 mb10 pure-u-1" name="txtStrPoblacion" id="txtStrPoblacion" autocomplete="off" tabindex="11" placeholder="Town/City *" data-suffix="default" onfocus="common_searchPoblacionAlertIfEmpty(this)" onblur="common_searchPoblacionReset(this)" onkeyup="common_searchPoblacion(this, this.form.Pais.value, event);" type="text">
+                                        <div id="StrPoblacion" class="app-suggest-poblacion-div-default droplayer droplayer-scroll pure-u-4-5 dnone"></div>
+                                    </div>
+                                </div>
+                                <div class="pure-g mb5">
+                                    <input class="mt5 mb10 pure-u-1" name="Postcode" placeholder="Postcode *" tabindex="12" type="text">
+                                    @Html.ValidationMessageFor(model => model.Postcode)
+                                </div>
+                                <div class="pure-g">
+                                    <input class="mt5 mb10 pure-u-1" name="Address" placeholder="Address *" tabindex="13" type="text">
+                                    @Html.ValidationMessageFor(model => model.Address)
+                                </div>
+                            </div>
+                            <div class="pure-u-4-10 fright">
+                                <div class="pure-u-9-10 vendors-signup-notice blue fright">
+                                    <p class="color-grey m0">
+                                        <small>
+                                            Enter
+                                            the address of your business so that users can see your location. Note
+                                            that search filters and map features are based on this information.
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-g">
+                        <div class="vendors-signup-box border-top border-separator-light p30">
+                            <div class="pure-u-6-10">
+                                <div class="pure-g mb5">
+                                    <input class="form-input form-input-emp pure-u-1" name="BusinessName" placeholder="Name of your business *" tabindex="14" type="text">
+                                    @Html.ValidationMessageFor(model => model.BusinessName)
+                                </div>
+                                <div class="pure-g mb5">
+                                    <div class="pure-u-1">
+                                        <p class="mt5 mb10" for="">Describe your business and services (in third person)</p>
+                                        <img src="../../images/editor.png" class="img-responive appimg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pure-u-4-10">
+                                <div class="pure-u-9-10 vendors-signup-notice blue fright">
+                                    <p class="color-grey m0">
+                                        <small>
+                                            Add a
+                                            detailed description of all the services and products that your company
+                                            provide. This information will be really useful to couples.<br><br> Our
+                                            team of journalists will then edit you text so that it's up to
+                                            standard. Please don't add contact details such as email, phone number,
+                                            website, address...
+                                        </small>
+                                    </p>
+                                    <a href="" target="_blank">View an example of a listed business</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt30">
+                        <h3 class="vendors-sign-up-title-box">Your Business Category</h3>
+                    </div>
+                    <div class="pure-g">
+                        <div class="pure-u-1 vendors-signup-box p30">
+                            <div class="app-vendors-alta-sector">
+                                <div class="pure-g emp-alta-sector">
+
+                                    <div class="pure-u-1-4">
+                                        <h3> Wedding Venues</h3>
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_1" name="Sector" value="1" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_1">Mansion wedding</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_3" name="Sector" value="3" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_3">Hotel wedding</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal checked" style="position: relative;">
+                                                <div class="iradio_minimal checked" style="position: relative;">
+                                                    <input id="sector_4" name="Sector" value="4" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" checked="checked" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_4">Restaurant wedding</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_5" name="Sector" value="5" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_5">Wedding catering</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_31" name="Sector" value="31" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_31">Castle wedding</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_39" name="Sector" value="39" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_39">Unique wedding venues</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_42" name="Sector" value="42" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_42">Wedding barns</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_43" name="Sector" value="43" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_43">Town Hall wedding</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_44" name="Sector" value="44" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_44">Conference centre</label>
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="pure-u-1-4">
+                                        <h3> Wedding Suppliers</h3>
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_6" name="Sector" value="6" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_6">Wedding invitations</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_7" name="Sector" value="7" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_7">Wedding favours</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_8" name="Sector" value="8" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_8">Wedding photographer</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_33" name="Sector" value="33" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_33">Wedding videographers</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_9" name="Sector" value="9" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_9">Wedding music</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_10" name="Sector" value="10" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_10">Wedding cars</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_11" name="Sector" value="11" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_11">Bus hire</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_13" name="Sector" value="13" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_13">Marquee hire</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_14" name="Sector" value="14" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_14">Wedding entertainment</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_15" name="Sector" value="15" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_15">Wedding florist</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_27" name="Sector" value="27" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_27">Gift list</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_28" name="Sector" value="28" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_28">Wedding Planner</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_40" name="Sector" value="40" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_40">Honeymoon</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_45" name="Sector" value="45" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_45">Wedding decorations</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_48" name="Sector" value="48" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_48">Wedding cakes</label>
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="pure-u-1-4">
+                                        <h3> Brides</h3>
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_17" name="Sector" value="17" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_17">Wedding dress</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_18" name="Sector" value="18" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_18">Wedding accessories</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_36" name="Sector" value="36" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_36">Wedding jewellery</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_37" name="Sector" value="37" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_37">Wedding hair</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_38" name="Sector" value="38" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_38">Wedding make up</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_20" name="Sector" value="20" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_20">Evening dresses</label>
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="pure-u-1-4">
+                                        <h3> Grooms</h3>
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_21" name="Sector" value="21" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_21">Wedding suits</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_24" name="Sector" value="24" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_24">Men's accessories</label>
+                                        </div>
+
+
+                                        <div class="pure-control-group">
+                                            <div class="iradio_minimal" style="position: relative;">
+                                                <div class="iradio_minimal" style="position: relative;">
+                                                    <input id="sector_23" name="Sector" value="23" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="radio"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                </div><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                            </div>
+                                            <label class="emp-alta-sector-label" for="sector_23">Men's beauty</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-g">
+                        <div class="pure-u-1 text-center">
+                            <div class="p25">
+                                <div class="pure-g mb15">
+                                    <div class="pure-u-1">
+                                        <p class="small">
+                                            <small>When you click  "Next " you are agreeing to the <a href="" target="_blank">legal terms</a>.</small>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="pure-g">
+                                    <div class="pure-u-1">
+                                        <input value="Next" class="btn btn-primary btn adminbtn" type="submit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+        </div>
+        <footer class="aftlgn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 footerleft ">
+                        <h6 class="heading7">Information</h6>
+                        <ul class="footer-ul">
+                            <li>
+                                <a href="#">Contact us</a>
+                            </li>
+                            <li>
+                                <a href="#">Legal terms</a>
+                            </li>
+                            <li>
+                                <a href="#">Register your business</a>
+                            </li>
+                            <li>
+                                <a href="#">About us</a>
+                            </li>
+                            <li>
+                                <a href="#">Cookies policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 paddingtop-bottom">
+                        <h6 class="heading7">Download the app</h6>
+                        <ul class="footer-ul">
+                            <li>
+                                <a href="#">
+                                    <img src="../../images/apple.png" class="img-responive appimg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../../images/googleplay.png" class="img-responive appimg">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                        <h6 class="heading7">Follow us on</h6>
+                        <ul class="footer-ul">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i> Facebook
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--footer start from here-->
+        <div class="copyright">
+            <div class="container">
+                <div class="col-md-4">
+                    <p>© 2016 - All Rights with aaaa</p>
+                </div>
+                <div class="col-md-8">
+                    <ul class="bottom_ul">
+                        <li>
+                            <a href="#">My wedding</a>
+                        </li>
+                        <li>
+                            <a href="#">Wedding Venues</a>
+                        </li>
+                        <li>
+                            <a href="#">Wedding Suppliers</a>
+                        </li>
+                        <li>
+                            <a href="#">Brides</a>
+                        </li>
+                        <li>
+                            <a href="#">Grooms</a>
+                        </li>
+                        <li>
+                            <a href="#">Wedding Tips</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/js/js-ssl-utf8-ssl20170829-01UK97-1-common.js"></script>
+    <script src="~/Content/js/jquery_1.js"></script>
+    <script type="text/javascript" src="~/Content/js/bootstrap.js"></script>
+
+</body>
+</html>
