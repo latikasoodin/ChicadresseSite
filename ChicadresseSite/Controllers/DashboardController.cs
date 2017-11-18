@@ -52,7 +52,7 @@ namespace ChicadresseSite.Controllers
             return Json(tsk, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult setTaskCompletionStatus()
+        public void setTaskCompletionStatus()
         {
 
         }
