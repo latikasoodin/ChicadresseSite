@@ -1,0 +1,286 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WeddingLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <section class="left_right_dash">
+            <div class="col-sm-9 no_left_pdg invitfour">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <h4><i class="orglestble2"></i>  Filtrer par</h4>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <a href="javascript:void(0);" data-toggle="modal" data-target="#myffrm"><h4><i class="orglestble1"></i>  Ajouter invité(e)</h4></a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <h4><i class="orglestble"></i>  Organiser les tables</h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <a href="javascript:void(0);" class="pdf_btn">Telecharger PDF</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="table-responsive">
+                    <table id="mytable" class="table table-bordred table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-4">Nom</th>
+                                <th class="col-sm-3">Présence</th>
+                                <th class="col-sm-2">Table</th>
+                                <th class="col-sm-3">Groupe</th>
+                                <th class="col-sm-1">option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-sm-4">Leila Dafir</td>
+                                <td class="col-sm-3 tblwithicon">
+                                    <i class="rclock_icon"></i>
+                                    <select class="selectpicker" data-size="2">
+                                        <option>En attente</option>
+                                        <option>Confirmé</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-2">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-3">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-1">
+                                    <ul class="icn_rightlist">
+                                        <li>
+                                            <i class="gst dlt"></i>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"><i class="gst pencil"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">Leila Dafir</td>
+                                <td class="col-sm-3 tblwithicon">
+                                    <i class="right_icon"></i>
+                                    <select class="selectpicker" data-size="2">
+                                        <option>En attente</option>
+                                        <option>Confirmé</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-2">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-3">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-1">
+                                    <ul class="icn_rightlist">
+                                        <li>
+                                            <i class="gst dlt"></i>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"><i class="gst pencil"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">Leila Dafir</td>
+                                <td class="col-sm-3 tblwithicon">
+                                    <i class="rclock_icon"></i>
+                                    <select class="selectpicker" data-size="2">
+                                        <option>En attente</option>
+                                        <option>Confirmé</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-2">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-3">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-1">
+                                    <ul class="icn_rightlist">
+                                        <li>
+                                            <i class="gst dlt"></i>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"><i class="gst pencil"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">Leila Dafir</td>
+                                <td class="col-sm-3 tblwithicon">
+                                    <i class="rclock_icon"></i>
+                                    <select class="selectpicker" data-size="2">
+                                        <option>En attente</option>
+                                        <option>Confirmé</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-2">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-3">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-1">
+                                    <ul class="icn_rightlist">
+                                        <li>
+                                            <i class="gst dlt"></i>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"><i class="gst pencil"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">Leila Dafir</td>
+                                <td class="col-sm-3 tblwithicon">
+                                    <i class="rclock_icon"></i>
+                                    <select class="selectpicker" data-size="2">
+                                        <option>En attente</option>
+                                        <option>Confirmé</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-2">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                        <option>Diamond</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-3">
+                                    <select class="selectpicker" data-size="3">
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                        <option>Amies de la mariée</option>
+                                    </select>
+                                </td>
+                                <td class="col-sm-1">
+                                    <ul class="icn_rightlist">
+                                        <li>
+                                            <i class="gst dlt"></i>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"><i class="gst pencil"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-sm-3 padding-right">
+                <section class="box_detail" style="background-color:#91d0d8;padding:15px;margin:0 0 15px;">
+                    <ul>
+                        <li>
+                            <div class="icon">
+                                <span class="tble i_dinner_table_one"></span>
+                            </div>
+                            <div class="txt_sed">
+                                <p>45 invites</p>
+                                <span>Ajouter invité(e)</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                    <ul class="threelist">
+                        <li>
+                            <div class="txt_sedd">
+                                <span>Confirmé</span>
+                                <p>30</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <div class="txt_sedd">
+                                <span>En attente</span>
+                                <p>15</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <div class="txt_sedd">
+                                <span>Tables</span>
+                                <p>30</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </section>
+                <section class="ads_right_box">
+                    <a href="javascript:void(0);">
+                        <img src="images/jeff.jpg" class="img-responsive">
+                    </a>
+                </section>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mySelect = $('selectpicker');
+
+            $('#click_advance').click(function () {
+                $('#display_advance').toggle('1000');
+                $("i", this).toggleClass("fa-plus fa-minus");
+            });
+        });
+    </script>
+}
