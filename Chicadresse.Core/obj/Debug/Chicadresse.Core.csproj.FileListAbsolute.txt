@@ -1,5 +1,0 @@
-C:\latika\ChicadresseSite\Chicadresse.Core\bin\Debug\Chicadresse.Core.dll
-C:\latika\ChicadresseSite\Chicadresse.Core\bin\Debug\Chicadresse.Core.pdb
-C:\latika\ChicadresseSite\Chicadresse.Core\obj\Debug\Chicadresse.Core.csproj.CoreCompileInputs.cache
-C:\latika\ChicadresseSite\Chicadresse.Core\obj\Debug\Chicadresse.Core.dll
-C:\latika\ChicadresseSite\Chicadresse.Core\obj\Debug\Chicadresse.Core.pdb

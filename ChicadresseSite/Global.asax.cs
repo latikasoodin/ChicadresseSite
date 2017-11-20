@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.Mvc;
+using Chicadresse.Business.DependencyModule;
+using ChicadresseSite.App_Start;
+using ChicadresseSite.DependencyModule;
+using ChicadresseSite.Mappings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +24,15 @@ namespace ChicadresseSite
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Bootstrapper.Run();
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            // Code that runs when an unhandled error occurs
+            Exception ex = Server.GetLastError();
+        }
+
     }
 }
