@@ -1,0 +1,16 @@
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Data.dll.config
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Data.dll
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Data.pdb
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Core.dll
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Entities.dll
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\EntityFramework.dll
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Core.pdb
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Entities.pdb
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\Chicadresse.Entities.dll.config
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\EntityFramework.xml
+C:\latika\ChicadresseSite\Chicadresse.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\latika\ChicadresseSite\Chicadresse.Data\obj\Debug\Chicadresse.Data.csprojResolveAssemblyReference.cache
+C:\latika\ChicadresseSite\Chicadresse.Data\obj\Debug\Chicadresse.Data.csproj.CoreCompileInputs.cache
+C:\latika\ChicadresseSite\Chicadresse.Data\obj\Debug\Chicadresse.Data.dll
+C:\latika\ChicadresseSite\Chicadresse.Data\obj\Debug\Chicadresse.Data.pdb

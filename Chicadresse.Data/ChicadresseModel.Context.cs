@@ -50,5 +50,7 @@ namespace Chicadresse.Data
         public virtual DbSet<Business_User> Business_User { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<User_FavouriteBusinessUser> User_FavouriteBusinessUser { get; set; }
+        public virtual DbSet<User_Task> User_Task { get; set; }
     }
 }

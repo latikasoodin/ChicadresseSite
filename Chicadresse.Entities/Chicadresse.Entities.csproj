@@ -117,7 +117,13 @@
     <Compile Include="Domain\UserActivation.cs">
       <DependentUpon>Chicadresse.tt</DependentUpon>
     </Compile>
+    <Compile Include="Domain\User_FavouriteBusinessUser.cs">
+      <DependentUpon>Chicadresse.tt</DependentUpon>
+    </Compile>
     <Compile Include="Domain\User_Role.cs">
+      <DependentUpon>Chicadresse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\User_Task.cs">
       <DependentUpon>Chicadresse.tt</DependentUpon>
     </Compile>
     <Compile Include="Domain\Vendor.cs">

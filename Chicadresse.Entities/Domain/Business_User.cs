@@ -22,6 +22,7 @@ namespace Chicadresse.Entities.Domain
             this.Response_Template = new HashSet<Response_Template>();
             this.Reviews = new HashSet<Review>();
             this.Tasks = new HashSet<Task>();
+            this.User_FavouriteBusinessUser = new HashSet<User_FavouriteBusinessUser>();
         }
     
         public int BusinessUserId { get; set; }
@@ -52,5 +53,7 @@ namespace Chicadresse.Entities.Domain
         public virtual ICollection<Review> Reviews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_FavouriteBusinessUser> User_FavouriteBusinessUser { get; set; }
     }
 }
