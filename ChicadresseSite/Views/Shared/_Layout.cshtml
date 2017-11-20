@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Chicadresse</title>
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -29,17 +29,13 @@
                         </a>
                     </div>
                 </div>
-                @*<div class="headertopright">
-                        <a class="facebookicon" href="#">
-                            FAQ
-                        </a>
-                        @Html.ActionLink("s’enregistrer", "Signup", "Login", new { @class = "twittericon" })
-
-                        @Html.ActionLink("se connecter", "Login", "Login", new { @class = "linkedinicon" })
-                    </div>*@
-
-                <a href="@Url.Action("Logout","Login")" class="linkedinicon">Logout</a>
-
+                <div class="headertopright">
+                    <a class="facebookicon" href="#">
+                        FAQ
+                    </a>
+                    <a href="@Url.Action("Signup","Login")" class="twittericon">s’enregistrer</a>
+                    <a href="@Url.Action("Index","Login")" class="linkedinicon">se connecter</a>
+                </div>
             </div>
         </div>
         <div class="headerfull">
@@ -89,30 +85,30 @@
                 <div class="container">
                     <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
                         <span class="calendr"></span>
-                        <h6>@ViewBag.MarriageDateString</h6>
+                        <h6>@UserSession.MarriageDate.ToDateTimeString()</h6>
                         <div class="profile_box">
                             <div class="boy_box">
-                                @if(!string.IsNullOrEmpty(ViewBag.MyPic))
+                                @if (ViewBag.MyPic == "")
                                 {
-                                    <img src="~/@ViewBag.MyPic" class="man_bg" id="a-profile-pic-modal" />
+                                    <img src=@ViewBag.MyPic class="man_bg" id="a-profile-pic-modal" />
                                 }
                                 else
                                 {
                                     <img src="~/Content/images/booy.png" class="man_bg" id="a-profile-pic-modal" />
                                 }
-                                <small>@ViewBag.Name</small>
+                                <small>@UserSession.Name</small>
                             </div>
                             <span class="and_text">& </span>
                             <div class="gl_box">
-                                @if (!string.IsNullOrEmpty(ViewBag.MyPartnerPic))
+                                @if (ViewBag.MyPartnerPic == "")
                                 {
-                                    <img src=@ViewBag.MyPartnerPic class="woman_bg" id="img-profile-pic-modal" />
+                                    <img src=@ViewBag.MyPartnerPic class="woman_bg" id="a-profile-pic-modal" />
                                 }
                                 else
                                 {
-                                    <img src="~/Content/images/girll.png" class="woman_bg" id="img-profile-pic-modal" />
+                                    <img src="~/Content/images/girll.png" class="woman_bg" id="a-profile-pic-modal" />
                                 }
-                                <small>@ViewBag.PartnerName</small>
+                                <small>@UserSession.PartnerName</small>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -140,198 +136,166 @@
                     </div>
                 </div>
             </section>
-            <section class="sub_menufullwidth">
-                <div class="container">
-                    <div class="row">
-                        <div class="sub_menu">
-                            <ul class="list_sub_menu">
-                                <li class="active">
-                                    <a href="@Url.Action("Index", "Dashboard")" class="wed i_rings">mon Mariage</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Dashboard")" class="task i_write_feedback">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Checklist", "Dashboard")" class="vndr i_hotel_restaurant_16">Taches</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Prestataires", "Dashboard")" class="gst i_live_contest">Prestataires</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Dashboard")" class="tble i_dinner_table">Budget</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Dashboard")" class="bdg i_official_document">Invites</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Dashboard")" class="drss i_wedding_dress">Tables</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Dashboard")" class="web i_tv_television">Messages</a>
-                                </li>
 
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="ttl_box">
-                            <h3><i class="gst i_live_contestt"></i> Trouvez le prestataire de votre choix pres de chez vous</h3>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="serch_box">
-                            <form>
-                                <div class="form-group col-sm-5">
-                                    <input type="text" class="form-control" id="teett" placeholder="Que cherchez-vous?" />
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <input type="text" class="form-control" placeholder="Sélcetionnez votre ville" id="teet" />
-                                </div>
-                                <div class="col-sm-3">
-                                    <button type="submit" class="btn btn-default btnsbmit">Chercher</button>
-                                </div>
-                            </form>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            @RenderSection("SubMenu", false)
 
             @RenderBody()
 
-            <section class="top_footer_box">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="col-sm-3">
-                                <ul class="unstyled">
-                                    <h3>Wedding Venues</h3>
-                                    <li>
-                                        <a href="#">Mansion weddings <span>10</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding venue hotels <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding in restaurant <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Catering for a wedding <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding castle venues <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Unique venue <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Barn wedding <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Town halls for hire <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Conference centers <span>46</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3">
-                                <ul class="unstyled">
-                                    <h3>Wedding Suppliers</h3>
-                                    <li>
-                                        <a href="#">Wedding invitations <span>10</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Favors for weddings <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Photographer for wedding <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding videographer <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding music for ceremony <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Car for wedding <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Marquee rental <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding entertainment <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding flower shops <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Weddings planner <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding and honeymoon <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding decorating <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding cakes <span>46</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3">
-                                <ul class="unstyled">
-                                    <h3>Brides</h3>
-                                    <li>
-                                        <a href="#">Bridal dresses <span>10</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding accessories <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding jewellery <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding hair <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding make up <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Evening dresses<span>46</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3">
-                                <ul class="unstyled">
-                                    <h3>Grooms</h3>
-                                    <li>
-                                        <a href="#">Wedding suits <span>10</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Men's accessories <span>46</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Men's beauty <span>46</span></a>
-                                    </li>
-                                </ul>
+            @if (ShowCategories == true)
+            {
+                <section class="top_footer_box">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <ul class="unstyled">
+                                        <h3>Wedding Venues</h3>
+                                        <li>
+                                            <a href="#">Mansion weddings <span>10</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding venue hotels <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding in restaurant <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Catering for a wedding <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding castle venues <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Unique venue <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Barn wedding <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Town halls for hire <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Conference centers <span>46</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-3">
+                                    <ul class="unstyled">
+                                        <h3>Wedding Suppliers</h3>
+                                        <li>
+                                            <a href="#">Wedding invitations <span>10</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Favors for weddings <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Photographer for wedding <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding videographer <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding music for ceremony <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Car for wedding <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Marquee rental <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding entertainment <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding flower shops <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Weddings planner <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding and honeymoon <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding decorating <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding cakes <span>46</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-3">
+                                    <ul class="unstyled">
+                                        <h3>Brides</h3>
+                                        <li>
+                                            <a href="#">Bridal dresses <span>10</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding accessories <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding jewellery <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding hair <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wedding make up <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Evening dresses<span>46</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-3">
+                                    <ul class="unstyled">
+                                        <h3>Grooms</h3>
+                                        <li>
+                                            <a href="#">Wedding suits <span>10</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Men's accessories <span>46</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Men's beauty <span>46</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <div class="copyright">
+                </section>
+            }
+            <!--footer start from here-->
+            <footer class="copyright">
                 <div class="container">
                     <div class="col-md-4">
-                        <p></p>
+                        <p> © <a href="javascript:void(0);">chicadresse</a> 2017 tout les droit reserver</p>
                     </div>
                     <div class="col-md-8">
-
+                        <ul class="bottom_ul">
+                            <li>
+                                <a href="#">My wedding</a>
+                            </li>
+                            <li>
+                                <a href="#">Wedding Venues</a>
+                            </li>
+                            <li>
+                                <a href="#">Wedding Suppliers</a>
+                            </li>
+                            <li>
+                                <a href="#">Brides</a>
+                            </li>
+                            <li>
+                                <a href="#">Grooms</a>
+                            </li>
+                            <li>
+                                <a href="#">Wedding Tips</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-
+            </footer>
         </div>
-
     </div>
 
     <!-- Modal -->
@@ -425,10 +389,17 @@
         </div>
     </div>
 
-   
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#a-profile-pic-modal").click(function () {
+                $("#profile-pic-modal").modal();
+            });
+        });
+    </script>
 
     @*<script src="~/Content/js/js-ssl-utf8-ssl20170821-02UK97-1-common.js"></script>*@
-    @*<script src="~/Content/js/jquery_1.js"></script>*@
+    <script src="~/Content/js/jquery_1.js"></script>
+
 
     <script type="text/javascript" src="~/Content/js/bootstrap.js"></script>
 
@@ -442,14 +413,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var mySelect = $('#first-disabled2');
-
-            $("#a-profile-pic-modal").click(function () {
-                $("#profile-pic-modal").modal();
-            });
-
-            $("#img-profile-pic-modal").click(function () {
-                $("#profile-pic-modal").modal();
-            });
         });
     </script>
     <script type="text/javascript">
