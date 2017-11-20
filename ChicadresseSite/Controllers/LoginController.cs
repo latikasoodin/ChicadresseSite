@@ -62,14 +62,38 @@ namespace ChicadresseSite.Controllers
                     var verified = SendActivationEmail(obj);
                     if (verified == "success")
                     {
-                        //To add by default first 29 tasks taskId to User_Task table
-                        User_Task usrTsk = new User_Task();
-                        IEnumerable<Task> tskList = unitOfWork.TaskRepository.Get().Take(29);
+                        ////To add by default first 29 tasks taskId to User_Task table
+                        //User_Task usrTsk = new User_Task();
+                        //IEnumerable<Task> tskList = unitOfWork.TaskRepository.Get().Take(29);
+
+                        //IEnumerable<User_Task> usertskList = tskList.Select(x => new User_Task { UserId = x.UserId.HasValue ? x.UserId.Value : obj.Id, TaskId = x.TaskId, CompletionStatus = x.CompletionStatus.HasValue ? x.CompletionStatus.Value : false });
+
+                        //unitOfWork.UserTaskRepository.Insert(usertskList);
+                        //unitOfWork.Save();
+
+                        var marriageDate = Convert.ToDateTime(obj.MarriageDate);
+                        var currentDate = DateTime.Now;
+                        var monthBetweenMarriage = (marriageDate.Month - currentDate.Month) + 12 * (marriageDate.Year - currentDate.Year);
+                        List<int> list = new List<int>();
+                        for (int i = 1; i <= monthBetweenMarriage; i++)
+                            list.Add(i);
+
+                        IEnumerable<Task_Timing> timeInMonthList = unitOfWork.TaskTimingRepository.Get();
+
+                        HashSet<int> diffids = new HashSet<int>(list);
+                        //You will have the difference here
+                        var timeInMonth1 = timeInMonthList.Where(m => diffids.Contains(m.Timing));
+                        HashSet<int> timeInMonth = new HashSet<int>(timeInMonth1.Select(s => s.Timing));
+                        //HashSet<int> timeInMonth = new HashSet<int>(timeInMonthList.Select(s => s.TimingId).Where(s => s.));
+
+                        IEnumerable<Task> tskList = unitOfWork.TaskRepository.Get().Where(m => timeInMonth.Contains(Convert.ToInt32(m.TimeMonth))).ToList();
 
                         IEnumerable<User_Task> usertskList = tskList.Select(x => new User_Task { UserId = x.UserId.HasValue ? x.UserId.Value : obj.Id, TaskId = x.TaskId, CompletionStatus = x.CompletionStatus.HasValue ? x.CompletionStatus.Value : false });
 
                         unitOfWork.UserTaskRepository.Insert(usertskList);
                         unitOfWork.Save();
+
+
 
                         return RedirectToAction("Index", "Dashboard", obj);
                     }

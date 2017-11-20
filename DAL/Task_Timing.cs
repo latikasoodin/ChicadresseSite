@@ -21,7 +21,7 @@ namespace DAL
         }
     
         public int TimingId { get; set; }
-        public string Timing { get; set; }
+        public int Timing { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }

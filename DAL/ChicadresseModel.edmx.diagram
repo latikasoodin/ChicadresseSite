@@ -28,7 +28,6 @@
         <AssociationConnector Association="ChicadressModel.FK_Messages_Message_Status" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ChicadressModel.UserActivation" Width="1.5" PointX="1.5" PointY="22" />
         <EntityTypeShape EntityType="ChicadressModel.Register" Width="1.5" PointX="7.375" PointY="12.75" />
-        <EntityTypeShape EntityType="ChicadressModel.Task_Timing" Width="1.5" PointX="3.75" PointY="24.5" />
         <EntityTypeShape EntityType="ChicadressModel.Tasks_Category" Width="1.5" PointX="0.75" PointY="11" />
         <AssociationConnector Association="ChicadressModel.FK_Vendors_Tasks_Category" />
         <EntityTypeShape EntityType="ChicadressModel.Business_User" Width="1.5" PointX="3" PointY="9.375" />
@@ -46,12 +45,13 @@
         <AssociationConnector Association="ChicadressModel.FK_User_FavouriteBusinessUser_Business_User" />
         <AssociationConnector Association="ChicadressModel.FK_User_FavouriteBusinessUser_User" />
         <EntityTypeShape EntityType="ChicadressModel.Task" Width="1.5" PointX="6" PointY="17.75" />
+        <EntityTypeShape EntityType="ChicadressModel.Task_Timing" Width="1.5" PointX="3.75" PointY="25" />
         <AssociationConnector Association="ChicadressModel.FK_Task_Business_User" />
         <AssociationConnector Association="ChicadressModel.FK_Task_Task_Timing" />
         <AssociationConnector Association="ChicadressModel.FK_Task_Tasks_Category" />
         <AssociationConnector Association="ChicadressModel.FK_Task_User" />
         <AssociationConnector Association="ChicadressModel.FK_User_Task_Task" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

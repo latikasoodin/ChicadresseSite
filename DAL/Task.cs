@@ -30,7 +30,7 @@ namespace DAL
         public string Notes { get; set; }
         public Nullable<int> Budget { get; set; }
         public Nullable<int> BusinessUserId { get; set; }
-        public string TimeMonth { get; set; }
+        public Nullable<int> TimeMonth { get; set; }
     
         public virtual Business_User Business_User { get; set; }
         public virtual Task_Timing Task_Timing { get; set; }

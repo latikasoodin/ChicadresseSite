@@ -27,6 +27,8 @@ namespace ChicadresseSite.Controllers
             var user = (User)ViewData["userSession"];
             var userId = user.Id;
 
+
+            //To add by default first 29 tasks taskId to User_Task table according to marriage date month
             IEnumerable<User_Task> usertaskCompletelist = unitOfWork.UserTaskRepository.Get().Where(a=> a.UserId.Equals(userId));
 
             HashSet<int> favIds = new HashSet<int>(usertaskCompletelist.Select(s => s.TaskId));
@@ -37,6 +39,9 @@ namespace ChicadresseSite.Controllers
             ViewBag.TotalTaskCompleted = usertaskCompletelist.Count();
 
             IEnumerable<Task_Timing> tskTiming = unitOfWork.TaskTimingRepository.Get();
+
+            ViewBag.TotalMonths = usertaskCompletelist.Select(s => s.Task.TimeMonth).Distinct();
+
             ViewBag.TaskTiming = tskTiming;
 
             return View(tskOfCurrentUser);
@@ -52,9 +57,22 @@ namespace ChicadresseSite.Controllers
             return Json(tsk, JsonRequestBehavior.AllowGet);
         }
 
-        public void setTaskCompletionStatus()
+        public ActionResult SetTaskCompletionStatus(int taskId)
         {
+            var user = (User)ViewData["userSession"];
+            var userId = user.Id;
 
+            IEnumerable<User_Task> usertask = unitOfWork.UserTaskRepository.Get().Where(a => a.UserId.Equals(userId) && a.TaskId.Equals(taskId));
+            var utsk = usertask as User_Task;
+            unitOfWork.UserTaskRepository.Update(utsk);
+            unitOfWork.Save();
+
+            IEnumerable<Task> task = unitOfWork.TaskRepository.Get().Where(a => a.UserId.Equals(userId) && a.TaskId.Equals(taskId));
+            var tsk = task as Task;
+            unitOfWork.TaskRepository.Update(tsk);
+            unitOfWork.Save();
+
+            return RedirectToAction("Checklist", "Dashboard");
         }
 
         // DELETE: /User/Delete
@@ -69,14 +87,13 @@ namespace ChicadresseSite.Controllers
         public ActionResult ChecklistAddRun(FormCollection form)
         {
             Task tsk = new Task();
-            tsk.Title = Convert.ToString(form["Nombre"]);
-            tsk.TimingId = Convert.ToInt32(form["Period"]);
-            tsk.CategoryId = Convert.ToInt32(form["Categoria"]);
-            tsk.Description = Convert.ToString(form["Notas"]);
+            tsk.Title = Convert.ToString(form["InputEmail1"]);
+            tsk.Description = Convert.ToString(form["comment"]);
             tsk.CompletionStatus = false;
 
             var user = (User)ViewData["userSession"];
             tsk.UserId = user.Id;
+            //tsk.TimeMonth = 
 
             unitOfWork.TaskRepository.Insert(tsk);
             unitOfWork.Save();

@@ -44,12 +44,12 @@ namespace DAL
         public virtual DbSet<Venue_list> Venue_list { get; set; }
         public virtual DbSet<UserActivation> UserActivations { get; set; }
         public virtual DbSet<Register> Registers { get; set; }
-        public virtual DbSet<Task_Timing> Task_Timing { get; set; }
         public virtual DbSet<Tasks_Category> Tasks_Category { get; set; }
         public virtual DbSet<Business_User> Business_User { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<User_Task> User_Task { get; set; }
         public virtual DbSet<User_FavouriteBusinessUser> User_FavouriteBusinessUser { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<Task_Timing> Task_Timing { get; set; }
     }
 }

@@ -188,14 +188,14 @@
           <Property Name="Notes" Type="nvarchar" MaxLength="500" />
           <Property Name="Budget" Type="int" />
           <Property Name="BusinessUserId" Type="int" />
-          <Property Name="TimeMonth" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeMonth" Type="int" />
         </EntityType>
         <EntityType Name="Task_Timing">
           <Key>
             <PropertyRef Name="TimingId" />
           </Key>
           <Property Name="TimingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Timing" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Timing" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tasks_Category">
           <Key>
@@ -873,7 +873,6 @@
           </AssociationSet>
           <EntitySet Name="UserActivations" EntityType="ChicadressModel.UserActivation" />
           <EntitySet Name="Registers" EntityType="ChicadressModel.Register" />
-          <EntitySet Name="Task_Timing" EntityType="ChicadressModel.Task_Timing" />
           <EntitySet Name="Tasks_Category" EntityType="ChicadressModel.Tasks_Category" />
           <AssociationSet Name="FK_Vendors_Tasks_Category" Association="ChicadressModel.FK_Vendors_Tasks_Category">
             <End Role="Tasks_Category" EntitySet="Tasks_Category" />
@@ -924,6 +923,7 @@
             <End Role="User_FavouriteBusinessUser" EntitySet="User_FavouriteBusinessUser" />
           </AssociationSet>
           <EntitySet Name="Tasks" EntityType="ChicadressModel.Task" />
+          <EntitySet Name="Task_Timing" EntityType="ChicadressModel.Task_Timing" />
           <AssociationSet Name="FK_Task_Business_User" Association="ChicadressModel.FK_Task_Business_User">
             <End Role="Business_User" EntitySet="Business_User" />
             <End Role="Task" EntitySet="Tasks" />
@@ -972,14 +972,6 @@
           <Property Name="Budget" Type="Int32" />
           <Property Name="NoOfGuest" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="Task_Timing">
-          <Key>
-            <PropertyRef Name="TimingId" />
-          </Key>
-          <Property Name="TimingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Timing" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tasks" Relationship="ChicadressModel.FK_Task_Task_Timing" FromRole="Task_Timing" ToRole="Task" />
         </EntityType>
         <EntityType Name="Tasks_Category">
           <Key>
@@ -1214,12 +1206,20 @@
           <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Budget" Type="Int32" />
           <Property Name="BusinessUserId" Type="Int32" />
-          <Property Name="TimeMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeMonth" Type="Int32" />
           <NavigationProperty Name="Business_User" Relationship="ChicadressModel.FK_Task_Business_User" FromRole="Task" ToRole="Business_User" />
           <NavigationProperty Name="Task_Timing" Relationship="ChicadressModel.FK_Task_Task_Timing" FromRole="Task" ToRole="Task_Timing" />
           <NavigationProperty Name="Tasks_Category" Relationship="ChicadressModel.FK_Task_Tasks_Category" FromRole="Task" ToRole="Tasks_Category" />
           <NavigationProperty Name="User" Relationship="ChicadressModel.FK_Task_User" FromRole="Task" ToRole="User" />
           <NavigationProperty Name="User_Task" Relationship="ChicadressModel.FK_User_Task_Task" FromRole="Task" ToRole="User_Task" />
+        </EntityType>
+        <EntityType Name="Task_Timing">
+          <Key>
+            <PropertyRef Name="TimingId" />
+          </Key>
+          <Property Name="TimingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timing" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="ChicadressModel.FK_Task_Task_Timing" FromRole="Task_Timing" ToRole="Task" />
         </EntityType>
         <Association Name="FK_Task_Business_User">
           <End Type="ChicadressModel.Business_User" Role="Business_User" Multiplicity="0..1" />
@@ -1483,14 +1483,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Task_Timing">
-            <EntityTypeMapping TypeName="ChicadressModel.Task_Timing">
-              <MappingFragment StoreEntitySet="Task_Timing">
-                <ScalarProperty Name="Timing" ColumnName="Timing" />
-                <ScalarProperty Name="TimingId" ColumnName="TimingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tasks_Category">
             <EntityTypeMapping TypeName="ChicadressModel.Tasks_Category">
               <MappingFragment StoreEntitySet="Tasks_Category">
@@ -1578,6 +1570,14 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task_Timing">
+            <EntityTypeMapping TypeName="ChicadressModel.Task_Timing">
+              <MappingFragment StoreEntitySet="Task_Timing">
+                <ScalarProperty Name="Timing" ColumnName="Timing" />
+                <ScalarProperty Name="TimingId" ColumnName="TimingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
