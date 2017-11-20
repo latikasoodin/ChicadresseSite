@@ -45,7 +45,8 @@ namespace ChicadresseSite.Controllers
                 var obj = this._userService.GetUser(objUser.Email, objUser.Password);
                 if (obj != null)
                 {
-                    var user = Mapper.Map<User, UserViewModel>(obj);
+                    var user = (User)obj;
+                    //var user = Mapper.Map<User, UserViewModel>(obj);
                     System.Web.HttpContext.Current.Session["userSession"] = user;
                     return RedirectToAction("Index", "Dashboard", obj);
                 }

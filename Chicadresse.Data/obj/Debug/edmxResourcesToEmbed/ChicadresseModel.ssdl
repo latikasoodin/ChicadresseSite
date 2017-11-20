@@ -1,0 +1,619 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ChicadressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Award_Category">
+    <Key>
+      <PropertyRef Name="AwardId" />
+    </Key>
+    <Property Name="AwardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AwardType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReviewRequired" Type="int" />
+  </EntityType>
+  <EntityType Name="Budget">
+    <Key>
+      <PropertyRef Name="BudgetId" />
+    </Key>
+    <Property Name="BudgetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BudgetConcept" Type="nvarchar" MaxLength="50" />
+    <Property Name="EstimatedCost" Type="nvarchar" MaxLength="50" />
+    <Property Name="FinalCost" Type="nvarchar" MaxLength="50" />
+    <Property Name="BudgetCategoryId" Type="int" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Budget_Category">
+    <Key>
+      <PropertyRef Name="BudgetCategoryId" />
+    </Key>
+    <Property Name="BudgetCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BudgetCategory" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Business_User">
+    <Key>
+      <PropertyRef Name="BusinessUserId" />
+    </Key>
+    <Property Name="BusinessUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone" Type="int" />
+    <Property Name="Mobile" Type="int" />
+    <Property Name="Fax" Type="int" />
+    <Property Name="Webpage" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Postcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusinessDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="CategoryId" Type="int" />
+  </EntityType>
+  <EntityType Name="Catering_Policy">
+    <Key>
+      <PropertyRef Name="CateringId" />
+    </Key>
+    <Property Name="CateringId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CateringPolicy" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event_Spaces">
+    <Key>
+      <PropertyRef Name="EventSpaceId" />
+    </Key>
+    <Property Name="EventSpaceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventSpace" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Guest_Details">
+    <Key>
+      <PropertyRef Name="GuestId" />
+    </Key>
+    <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Postcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="GroupId" Type="int" />
+    <Property Name="MenuId" Type="int" />
+  </EntityType>
+  <EntityType Name="Guest_Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GuestId" Type="int" />
+    <Property Name="TableId" Type="int" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="ImageId" />
+    </Key>
+    <Property Name="ImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImageType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusinessUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Message_Status">
+    <Key>
+      <PropertyRef Name="MessageStatusId" />
+    </Key>
+    <Property Name="MessageStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="200" />
+    <Property Name="MessageStatusId" Type="int" />
+    <Property Name="BusinessUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="nvarchar" MaxLength="100" />
+    <Property Name="BusinessUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="StateCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="MarriageDate" Type="datetime" />
+    <Property Name="Bride" Type="bit" />
+    <Property Name="Groom" Type="bit" />
+    <Property Name="PartnerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartnerId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Budget" Type="int" />
+    <Property Name="NoOfGuest" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Response_Template">
+    <Key>
+      <PropertyRef Name="TempId" />
+    </Key>
+    <Property Name="TempId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TemplateName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+    <Property Name="Text" Type="nvarchar" MaxLength="50" />
+    <Property Name="FilesAttached" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusinessUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReviewDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusinessUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Tables">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+    <Property Name="NoOfChairs" Type="int" />
+    <Property Name="ChairAvailable" Type="int" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="TimingId" Type="int" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CompletionStatus" Type="bit" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+    <Property Name="Budget" Type="int" />
+    <Property Name="BusinessUserId" Type="int" />
+    <Property Name="TimeMonth" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Task_Timing">
+    <Key>
+      <PropertyRef Name="TimingId" />
+    </Key>
+    <Property Name="TimingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Timing" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tasks_Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="StateCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="MarriageDate" Type="datetime" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="ActivationId" Type="int" />
+    <Property Name="PartnerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartnerId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Budget" Type="int" />
+    <Property Name="NoOfGuest" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="MyPic" Type="nvarchar(max)" />
+    <Property Name="MyPartnerPic" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="User_FavouriteBusinessUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="BusinessUserId" Type="int" Nullable="false" />
+    <Property Name="Favourite" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Role">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User_Task">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="TaskId" Type="int" Nullable="false" />
+    <Property Name="CompletionStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserActivation">
+    <Key>
+      <PropertyRef Name="ActivationId" />
+    </Key>
+    <Property Name="ActivationId" Type="int" Nullable="false" />
+    <Property Name="AcitivationCode" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendors">
+    <Key>
+      <PropertyRef Name="VendorId" />
+    </Key>
+    <Property Name="VendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierId" Type="int" />
+    <Property Name="CategoryId" Type="int" />
+  </EntityType>
+  <EntityType Name="Venue_list">
+    <Key>
+      <PropertyRef Name="VenueId" />
+    </Key>
+    <Property Name="VenueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VenueLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Budget_Budget_Category">
+    <End Role="Budget_Category" Type="Self.Budget_Category" Multiplicity="0..1" />
+    <End Role="Budget" Type="Self.Budget" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Budget_Category">
+        <PropertyRef Name="BudgetCategoryId" />
+      </Principal>
+      <Dependent Role="Budget">
+        <PropertyRef Name="BudgetCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Business_User_Tasks_Category">
+    <End Role="Tasks_Category" Type="Self.Tasks_Category" Multiplicity="0..1" />
+    <End Role="Business_User" Type="Self.Business_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Business_User">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_Table_Guest_Details">
+    <End Role="Guest_Details" Type="Self.Guest_Details" Multiplicity="0..1" />
+    <End Role="Guest_Table" Type="Self.Guest_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest_Details">
+        <PropertyRef Name="GuestId" />
+      </Principal>
+      <Dependent Role="Guest_Table">
+        <PropertyRef Name="GuestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_Table_Tables">
+    <End Role="Tables" Type="Self.Tables" Multiplicity="0..1" />
+    <End Role="Guest_Table" Type="Self.Guest_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tables">
+        <PropertyRef Name="TableId" />
+      </Principal>
+      <Dependent Role="Guest_Table">
+        <PropertyRef Name="TableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Messages_Business_User">
+    <End Role="Business_User" Type="Self.Business_User" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business_User">
+        <PropertyRef Name="BusinessUserId" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="BusinessUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Messages_Message_Status">
+    <End Role="Message_Status" Type="Self.Message_Status" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message_Status">
+        <PropertyRef Name="MessageStatusId" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="MessageStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_Business_User">
+    <End Role="Business_User" Type="Self.Business_User" Multiplicity="0..1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business_User">
+        <PropertyRef Name="BusinessUserId" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="BusinessUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Response_Template_Business_User">
+    <End Role="Business_User" Type="Self.Business_User" Multiplicity="0..1" />
+    <End Role="Response_Template" Type="Self.Response_Template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business_User">
+        <PropertyRef Name="BusinessUserId" />
+      </Principal>
+      <Dependent Role="Response_Template">
+        <PropertyRef Name="BusinessUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_Business_User">
+    <End Role="Business_User" Type="Self.Business_User" Multiplicity="0..1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business_User">
+        <PropertyRef Name="BusinessUserId" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="BusinessUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Business_User">
+    <End Role="Business_User" Type="Self.Business_User" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business_User">
+        <PropertyRef Name="BusinessUserId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="BusinessUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Timing">
+    <End Role="Task_Timing" Type="Self.Task_Timing" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task_Timing">
+        <PropertyRef Name="TimingId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="TimingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Tasks_Category">
+    <End Role="Tasks_Category" Type="Self.Tasks_Category" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_FavouriteBusinessUser_Business_User">
+    <End Role="Business_User" Type="Self.Business_User" Multiplicity="1" />
+    <End Role="User_FavouriteBusinessUser" Type="Self.User_FavouriteBusinessUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business_User">
+        <PropertyRef Name="BusinessUserId" />
+      </Principal>
+      <Dependent Role="User_FavouriteBusinessUser">
+        <PropertyRef Name="BusinessUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_FavouriteBusinessUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User_FavouriteBusinessUser" Type="Self.User_FavouriteBusinessUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User_FavouriteBusinessUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="User_Role" Type="Self.User_Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Role">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Task_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="User_Task" Type="Self.User_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskId" />
+      </Principal>
+      <Dependent Role="User_Task">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Task_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User_Task" Type="Self.User_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User_Task">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserActivation">
+    <End Role="UserActivation" Type="Self.UserActivation" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserActivation">
+        <PropertyRef Name="ActivationId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ActivationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendors_Tasks_Category">
+    <End Role="Tasks_Category" Type="Self.Tasks_Category" Multiplicity="0..1" />
+    <End Role="Vendors" Type="Self.Vendors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Vendors">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ChicadressModelStoreContainer">
+    <EntitySet Name="Award_Category" EntityType="Self.Award_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Budget" EntityType="Self.Budget" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Budget_Category" EntityType="Self.Budget_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Business_User" EntityType="Self.Business_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Catering_Policy" EntityType="Self.Catering_Policy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event_Spaces" EntityType="Self.Event_Spaces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Guest_Details" EntityType="Self.Guest_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Guest_Table" EntityType="Self.Guest_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message_Status" EntityType="Self.Message_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Register" EntityType="Self.Register" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Response_Template" EntityType="Self.Response_Template" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tables" EntityType="Self.Tables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task_Timing" EntityType="Self.Task_Timing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tasks_Category" EntityType="Self.Tasks_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_FavouriteBusinessUser" EntityType="Self.User_FavouriteBusinessUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Task" EntityType="Self.User_Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserActivation" EntityType="Self.UserActivation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Venue_list" EntityType="Self.Venue_list" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Budget_Budget_Category" Association="Self.FK_Budget_Budget_Category">
+      <End Role="Budget_Category" EntitySet="Budget_Category" />
+      <End Role="Budget" EntitySet="Budget" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Business_User_Tasks_Category" Association="Self.FK_Business_User_Tasks_Category">
+      <End Role="Tasks_Category" EntitySet="Tasks_Category" />
+      <End Role="Business_User" EntitySet="Business_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_Table_Guest_Details" Association="Self.FK_Guest_Table_Guest_Details">
+      <End Role="Guest_Details" EntitySet="Guest_Details" />
+      <End Role="Guest_Table" EntitySet="Guest_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_Table_Tables" Association="Self.FK_Guest_Table_Tables">
+      <End Role="Tables" EntitySet="Tables" />
+      <End Role="Guest_Table" EntitySet="Guest_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_Business_User" Association="Self.FK_Messages_Business_User">
+      <End Role="Business_User" EntitySet="Business_User" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_Message_Status" Association="Self.FK_Messages_Message_Status">
+      <End Role="Message_Status" EntitySet="Message_Status" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_Business_User" Association="Self.FK_Questions_Business_User">
+      <End Role="Business_User" EntitySet="Business_User" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Response_Template_Business_User" Association="Self.FK_Response_Template_Business_User">
+      <End Role="Business_User" EntitySet="Business_User" />
+      <End Role="Response_Template" EntitySet="Response_Template" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_Business_User" Association="Self.FK_Reviews_Business_User">
+      <End Role="Business_User" EntitySet="Business_User" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Business_User" Association="Self.FK_Task_Business_User">
+      <End Role="Business_User" EntitySet="Business_User" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Timing" Association="Self.FK_Task_Task_Timing">
+      <End Role="Task_Timing" EntitySet="Task_Timing" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Tasks_Category" Association="Self.FK_Task_Tasks_Category">
+      <End Role="Tasks_Category" EntitySet="Tasks_Category" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_FavouriteBusinessUser_Business_User" Association="Self.FK_User_FavouriteBusinessUser_Business_User">
+      <End Role="Business_User" EntitySet="Business_User" />
+      <End Role="User_FavouriteBusinessUser" EntitySet="User_FavouriteBusinessUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_FavouriteBusinessUser_User" Association="Self.FK_User_FavouriteBusinessUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User_FavouriteBusinessUser" EntitySet="User_FavouriteBusinessUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="User_Role" EntitySet="User_Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Task_Task" Association="Self.FK_User_Task_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="User_Task" EntitySet="User_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Task_User" Association="Self.FK_User_Task_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User_Task" EntitySet="User_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserActivation" Association="Self.FK_User_UserActivation">
+      <End Role="UserActivation" EntitySet="UserActivation" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendors_Tasks_Category" Association="Self.FK_Vendors_Tasks_Category">
+      <End Role="Tasks_Category" EntitySet="Tasks_Category" />
+      <End Role="Vendors" EntitySet="Vendors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

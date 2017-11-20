@@ -18,6 +18,8 @@ namespace Chicadresse.Entities.Domain
         public User()
         {
             this.Tasks = new HashSet<Task>();
+            this.User_FavouriteBusinessUser = new HashSet<User_FavouriteBusinessUser>();
+            this.User_Task = new HashSet<User_Task>();
         }
     
         public int Id { get; set; }
@@ -42,5 +44,9 @@ namespace Chicadresse.Entities.Domain
         public virtual ICollection<Task> Tasks { get; set; }
         public virtual User_Role User_Role { get; set; }
         public virtual UserActivation UserActivation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_FavouriteBusinessUser> User_FavouriteBusinessUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_Task> User_Task { get; set; }
     }
 }

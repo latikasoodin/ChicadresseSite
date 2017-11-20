@@ -45,6 +45,12 @@
         <AssociationConnector Association="ChicadressModel.FK_Task_User" />
         <AssociationConnector Association="ChicadressModel.FK_User_Role" />
         <AssociationConnector Association="ChicadressModel.FK_User_UserActivation" />
+        <EntityTypeShape EntityType="ChicadressModel.User_FavouriteBusinessUser" Width="1.875" PointX="9" PointY="17.625" />
+        <EntityTypeShape EntityType="ChicadressModel.User_Task" Width="1.875" PointX="8.25" PointY="20.875" />
+        <AssociationConnector Association="ChicadressModel.FK_User_FavouriteBusinessUser_Business_User" />
+        <AssociationConnector Association="ChicadressModel.FK_User_Task_Task" />
+        <AssociationConnector Association="ChicadressModel.FK_User_FavouriteBusinessUser_User" />
+        <AssociationConnector Association="ChicadressModel.FK_User_Task_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
