@@ -13,6 +13,15 @@ namespace ChicadresseSite.Mappings
         public ViewModelToDomainMappingProfile()
         {
             CreateMap<UserViewModel, User>();
+
+            CreateMap<CompanionViewModel, Guest_Companinons>()
+                .ForMember(d => d.CreatedDate, opt => opt.MapFrom(s => DateTime.Now))
+                .ForMember(d => d.ModifiedDate, opt => opt.MapFrom(s => DateTime.Now));
+
+            CreateMap<GuestViewModel, Guest_Details>()
+                 .ForMember(d => d.CreatedDate, opt => opt.MapFrom(s => DateTime.Now))
+                .ForMember(d => d.ModifiedDate, opt => opt.MapFrom(s => DateTime.Now))
+                .ForMember(d => d.Guest_Companinons, opt => opt.MapFrom(s => s.Companions));
         }
     }
 }

@@ -14,16 +14,15 @@ namespace Chicadresse.Entities.Domain
     
     public partial class UserActivation
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserActivation()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
-        public int ActivationId { get; set; }
+        public int Id { get; set; }
         public System.Guid AcitivationCode { get; set; }
+        public int UserId { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public bool IsDeleted { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

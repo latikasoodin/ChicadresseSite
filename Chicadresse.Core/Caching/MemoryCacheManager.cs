@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Caching;
 using System.Text.RegularExpressions;
 
-namespace Na.Core.Caching
+namespace Chicadresse.Core.Caching
 {
     /// <summary>
     /// Represents a MemoryCacheCache
@@ -35,21 +35,25 @@ namespace Na.Core.Caching
         /// <param name="key">key</param>
         /// <param name="data">Data</param>
         /// <param name="cacheTime">Cache time</param>
-        public void Set(string key, object data, int cacheTime)
+        public T Set<T>(string key, T data, int cacheTime)
         {
             if (data == null)
-                return;
-
+                return default(T);
+            if (IsSet(key))
+            {
+                return (T)Cache[key];
+            }
             var policy = new CacheItemPolicy();
             policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime);
             Cache.Add(new CacheItem(key, data), policy);
+            return (T)Cache[key];
         }
 
         public void Insert(string key, object data, int cacheTime)
         {
             if (data == null)
                 return;
-            if(IsSet(key))
+            if (IsSet(key))
             {
                 Remove(key);
             }

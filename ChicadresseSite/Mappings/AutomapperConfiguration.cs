@@ -8,7 +8,8 @@ namespace ChicadresseSite.Mappings
         {
             Mapper.Initialize(config =>
             {
-
+                config.AddProfile<DomainToViewModelMappingProfile>();
+                config.AddProfile<ViewModelToDomainMappingProfile>();
             });
         }
     }

@@ -389,33 +389,34 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="chicadresse-modal" role="dialog">
+
+    </div>
+
     <script type="text/javascript">
-        $(document).ready(function () {
+
+    </script>
+
+    <script src="~/app/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/app/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/app/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/menu.js"></script>
+    <script src="~/app/lib/jquery-touchswipe/jquery.touchSwipe.min.js"></script>
+    <script src="~/app/lib/bootstrap-carousel-touch-slider-master/bootstrap-touch-slider-min.js"></script>
+    <script src="~/app/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/app/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/app/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/app/core.js"></script>
+    <script src="~/app/chicadresse.js"></script>
+    <script type="text/javascript">
+        $(function () {
             $("#a-profile-pic-modal").click(function () {
                 $("#profile-pic-modal").modal();
             });
+            $('#bootstrap-touch-slider').bsTouchSlider();
         });
-    </script>
 
-    @*<script src="~/Content/js/js-ssl-utf8-ssl20170821-02UK97-1-common.js"></script>*@
-    <script src="~/Content/js/jquery_1.js"></script>
-
-
-    <script type="text/javascript" src="~/Content/js/bootstrap.js"></script>
-
-    <script type="text/javascript" src="~/Content/js/bootstrap-select.min.js"></script>
-    <script type="text/javascript" src="~/Content/js/menu.js"></script>
-    <script type="text/javascript" src="~/Content/js/jquery.touchSwipe.min.js"></script>
-    <script type="text/javascript" src="~/Content/js/bootstrap-touch-slider-min.js"></script>
-    <script type="text/javascript">
-        $('#bootstrap-touch-slider').bsTouchSlider();
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var mySelect = $('#first-disabled2');
-        });
-    </script>
-    <script type="text/javascript">
         function getTimeRemaining(endtime) {
             var t = Date.parse(endtime) - Date.parse(new Date());
             var seconds = Math.floor((t / 1000) % 60);
@@ -455,15 +456,11 @@
             var timeinterval = setInterval(updateClock, 1000);
         }
 
-        //var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-
         var deadline = new Date(Date.parse('@ViewBag.dt'));
 
         initializeClock('clockdiv', deadline);
-    </script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

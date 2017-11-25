@@ -13,6 +13,8 @@ namespace Chicadresse.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using Chicadresse.Entities.Domain;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ChicadressEntities : DbContext
     {
@@ -26,31 +28,41 @@ namespace Chicadresse.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Award_Category> Award_Category { get; set; }
-        public virtual DbSet<Budget> Budgets { get; set; }
-        public virtual DbSet<Budget_Category> Budget_Category { get; set; }
-        public virtual DbSet<Catering_Policy> Catering_Policy { get; set; }
-        public virtual DbSet<Event_Spaces> Event_Spaces { get; set; }
+        public virtual DbSet<Attendance> Attendances { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Guest_Companinons> Guest_Companinons { get; set; }
         public virtual DbSet<Guest_Details> Guest_Details { get; set; }
         public virtual DbSet<Guest_Table> Guest_Table { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Message_Status> Message_Status { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<Question> Questions { get; set; }
-        public virtual DbSet<Response_Template> Response_Template { get; set; }
-        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
-        public virtual DbSet<User_Role> User_Role { get; set; }
-        public virtual DbSet<Vendor> Vendors { get; set; }
-        public virtual DbSet<Venue_list> Venue_list { get; set; }
         public virtual DbSet<UserActivation> UserActivations { get; set; }
-        public virtual DbSet<Register> Registers { get; set; }
-        public virtual DbSet<Task_Timing> Task_Timing { get; set; }
-        public virtual DbSet<Tasks_Category> Tasks_Category { get; set; }
-        public virtual DbSet<Business_User> Business_User { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<User_FavouriteBusinessUser> User_FavouriteBusinessUser { get; set; }
-        public virtual DbSet<User_Task> User_Task { get; set; }
+        public virtual DbSet<Wedding> Weddings { get; set; }
+    
+        public virtual ObjectResult<Guest_List_Result> Guest_List(Nullable<int> weddingId, string name, Nullable<int> pageNumber, Nullable<int> pageSize, string orderBy)
+        {
+            var weddingIdParameter = weddingId.HasValue ?
+                new ObjectParameter("WeddingId", weddingId) :
+                new ObjectParameter("WeddingId", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var pageNumberParameter = pageNumber.HasValue ?
+                new ObjectParameter("PageNumber", pageNumber) :
+                new ObjectParameter("PageNumber", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            var orderByParameter = orderBy != null ?
+                new ObjectParameter("OrderBy", orderBy) :
+                new ObjectParameter("OrderBy", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Guest_List_Result>("Guest_List", weddingIdParameter, nameParameter, pageNumberParameter, pageSizeParameter, orderByParameter);
+        }
     }
 }

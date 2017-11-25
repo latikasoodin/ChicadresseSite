@@ -1,4 +1,4 @@
-﻿namespace Na.Core.Caching
+﻿namespace Chicadresse.Core.Caching
 {
     /// <summary>
     /// Cache manager interface
@@ -19,7 +19,7 @@
         /// <param name="key">key</param>
         /// <param name="data">Data</param>
         /// <param name="cacheTime">Cache time</param>
-        void Set(string key, object data, int cacheTime);
+        T Set<T>(string key, T data, int cacheTime);
 
         /// <summary>
         /// Gets a value indicating whether the value associated with the specified key is cached

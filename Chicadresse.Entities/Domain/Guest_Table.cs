@@ -17,6 +17,11 @@ namespace Chicadresse.Entities.Domain
         public int Id { get; set; }
         public Nullable<int> GuestId { get; set; }
         public Nullable<int> TableId { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Guest_Details Guest_Details { get; set; }
         public virtual Table Table { get; set; }

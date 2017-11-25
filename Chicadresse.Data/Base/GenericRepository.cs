@@ -78,8 +78,16 @@ namespace Chicadresse.Data.Base
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
+            if (context.Entry(entityToUpdate).State == EntityState.Detached)
+            {
+                dbSet.Attach(entityToUpdate);
+            }
             context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
+
+        public virtual IEnumerable<T> ExecuteStoredProcedure<T>(string procedureName, object[] parameters)
+        {
+            return this.context.Database.SqlQuery<T>(procedureName, parameters);
         }
     }
 }

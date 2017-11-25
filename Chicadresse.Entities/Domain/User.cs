@@ -17,36 +17,31 @@ namespace Chicadresse.Entities.Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Tasks = new HashSet<Task>();
-            this.User_FavouriteBusinessUser = new HashSet<User_FavouriteBusinessUser>();
-            this.User_Task = new HashSet<User_Task>();
+            this.UserActivations = new HashSet<UserActivation>();
+            this.UserRoles = new HashSet<UserRole>();
+            this.Weddings = new HashSet<Wedding>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Salt { get; set; }
         public string Password { get; set; }
         public string Country { get; set; }
         public string StateCity { get; set; }
         public string PhoneNo { get; set; }
-        public Nullable<System.DateTime> MarriageDate { get; set; }
-        public Nullable<int> User_Id { get; set; }
-        public Nullable<int> ActivationId { get; set; }
-        public string PartnerName { get; set; }
-        public string PartnerId { get; set; }
-        public Nullable<int> Budget { get; set; }
-        public Nullable<int> NoOfGuest { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public string MyPic { get; set; }
-        public string MyPartnerPic { get; set; }
+        public bool IsActive { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Tasks { get; set; }
-        public virtual User_Role User_Role { get; set; }
-        public virtual UserActivation UserActivation { get; set; }
+        public virtual ICollection<UserActivation> UserActivations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_FavouriteBusinessUser> User_FavouriteBusinessUser { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Task> User_Task { get; set; }
+        public virtual ICollection<Wedding> Weddings { get; set; }
     }
 }

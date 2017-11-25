@@ -20,10 +20,15 @@ namespace Chicadresse.Entities.Domain
             this.Guest_Table = new HashSet<Guest_Table>();
         }
     
-        public int TableId { get; set; }
+        public int Id { get; set; }
         public string TableName { get; set; }
         public Nullable<int> NoOfChairs { get; set; }
         public Nullable<int> ChairAvailable { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Guest_Table> Guest_Table { get; set; }

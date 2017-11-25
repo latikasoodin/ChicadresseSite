@@ -15,8 +15,13 @@ namespace ChicadresseSite.Mappings
         /// </summary>
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<User,UserViewModel>();
-            CreateMap<User, TaskViewModel>();
+            CreateMap<User, UserViewModel>();
+
+            CreateMap<Guest_Companinons, CompanionViewModel>();
+
+            CreateMap<Guest_Details, GuestViewModel>()
+                .ForMember(d => d.TableId, opt => opt.MapFrom(s => s.Guest_Table.FirstOrDefault().TableId))
+                .ForMember(d => d.Companions, opt => opt.MapFrom(s => s.Guest_Companinons));
         }
     }
 }

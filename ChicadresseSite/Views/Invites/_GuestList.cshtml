@@ -1,0 +1,43 @@
+﻿@using Chicadresse.Entities.Domain;
+@model IEnumerable<Guest_List_Result>
+@{
+    var groups = CacheServie.GetEntities<Group>(g => g.IsDeleted == false).ToList();
+    var tables = CacheServie.GetEntities<Table>(t => t.IsDeleted == false).ToList();
+    var attendances = CacheServie.GetEntities<Attendance>(a => a.IsDeleted == false).ToList();
+}
+
+@if (Model != null && Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DropDownListFor(x => item.Attendance, new SelectList(attendances, "Id", "Name", item.Attendance), new { @class = "presence selectpicker", data_id = item.Id, data_url = "/Invites/UpdatePresence" })
+            </td>
+            <td>
+                @Html.DropDownListFor(x => item.Group, new SelectList(groups, "Id", "Name", item.Group), new { @class = "groups selectpicker", data_id = item.Id, data_url = "/Invites/UpdateGroup" })
+            </td>
+            <td>
+                @Html.DropDownListFor(x => item.Table, new SelectList(tables, "Id", "TableName", item.Table), new { @class = "tables selectpicker", data_id = item.Id, data_url = "/Invites/UpdateTable" })
+            </td>
+            <td>
+                <ul class="icn_rightlist">
+                    <li>
+                        <a data-ajax="true" data-ajax-success="Invites.OpenModal" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#chicadresse-modal" href="/Invites/DeleteModal/@item.Id">
+                            <i class="gst dlt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-ajax="true" data-ajax-success="Invites.OpenModal" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#chicadresse-modal"
+                           href="/Invites/Edit/@item.Id">
+                            <i class="gst pencil"></i>
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    }
+}
