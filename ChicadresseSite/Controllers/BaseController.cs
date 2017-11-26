@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using Chicadresse.Entities.Domain;
+using Chicadresse.Entities.ViewModels;
+using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ChicadresseSite.Controllers
@@ -14,10 +17,21 @@ namespace ChicadresseSite.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            ViewData["userSession"] = System.Web.HttpContext.Current.Session["userSession"];
+            var userSession = System.Web.HttpContext.Current.Session["userSession"];
 
-            if (ViewData["userSession"] != null && ViewData.Values.Count() > 0)
+            if (userSession != null)
             {
+                UserViewModel user = (UserViewModel)userSession;
+
+                DateTime dt = Convert.ToDateTime(user.MarriageDate);
+                ViewBag.dt = Convert.ToString(dt);
+                ViewBag.MarriageDate = user.MarriageDate;
+                ViewBag.MarriageDateString = dt.ToString("dddd, dd MMMM yyyy");
+                ViewBag.Name = Convert.ToString(user.Name);
+                ViewBag.PartnerName = Convert.ToString(user.PartnerName);
+                ViewBag.MyPic = user.MyPic;
+                ViewBag.MyPartnerPic = user.MyPartnerPic;
+
                 //var userID = (int)ViewData["userSession"];
                 //ApplicationUser applicationUser = new ApplicationUser();
                 //List<application_user> userList = applicationUser.getChildByUserID(userID);

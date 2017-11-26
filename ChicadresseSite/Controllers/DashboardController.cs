@@ -1,85 +1,136 @@
-﻿using System;
+﻿using AutoMapper;
+using Chicadresse.Business.Services;
+using Chicadresse.Entities.Domain;
+using Chicadresse.Entities.ViewModels;
+using Chicadresse.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DAL;
-using DAL.UnitOfWork;
-using System.IO;
-using BLL;
 
 namespace ChicadresseSite.Controllers
 {
     public class DashboardController : BaseController
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
-        private Common common = new Common();
+        //private Common common = new Common();
+
+        #region Fields
+
+        private readonly IUserService _userService;
+        private readonly IUserTaskService _userTaskService;
+        private readonly ITaskService _taskService;
+        private readonly ITaskTimingService _taskTimingService;
+        private readonly IBusinessUserService _businessUserService;
+        private readonly IUserFavouriteBusinessService _userFavouriteBusinessService;
+
+        CommonDataHandler cdh = new CommonDataHandler();
+
+        #endregion
+
+        #region ctor
+
+        public DashboardController(IUserService userService, IUserTaskService userTaskService, ITaskService taskService, ITaskTimingService taskTimingService, IBusinessUserService businessUserService, IUserFavouriteBusinessService userFavouriteBusinessService)
+        {
+            this._userService = userService;
+            this._userTaskService = userTaskService;
+            this._taskService = taskService;
+            this._taskTimingService = taskTimingService;
+            this._businessUserService = businessUserService;
+            this._userFavouriteBusinessService = userFavouriteBusinessService;
+        }
+
+        #endregion
+
+        #region Actions
 
         // GET: Dashboard
         public ActionResult Index()
         {
+            UserViewModel user = (UserViewModel)System.Web.HttpContext.Current.Session["userSession"];
+            var userId = user.Id;
+
+            IEnumerable<User_FavouriteBusinessUser> favouriteList = _userFavouriteBusinessService.GetByUserId(userId);
+            IEnumerable<Business_User> businessUsercompletelist = _businessUserService.Get();
+
+            HashSet<int> favIds = new HashSet<int>(favouriteList.Select(s => s.BusinessUserId));
+            IEnumerable<Business_User> supplierList = businessUsercompletelist.Where(m => favIds.Contains(m.BusinessUserId)).ToList();
+
+            IEnumerable<BusinessUserViewModel> supplierModel = Mapper.Map<IEnumerable<Business_User>, IEnumerable<BusinessUserViewModel>>(supplierList);
+            ViewBag.SupplierCount = supplierModel.Count();
+            ViewBag.SupplierModel = supplierModel;
             return View();
         }
 
         // GET: Dashbord Checklist
         public ActionResult Checklist()
         {
-            var user = (User)ViewData["userSession"];
+            UserViewModel user = (UserViewModel)System.Web.HttpContext.Current.Session["userSession"];
             var userId = user.Id;
 
-
-            //To add by default first 29 tasks taskId to User_Task table according to marriage date month
-            IEnumerable<User_Task> usertaskCompletelist = unitOfWork.UserTaskRepository.Get().Where(a=> a.UserId.Equals(userId));
+            //To add by default tasks by timeMonth taskId to User_Task table according to marriage date month
+            IEnumerable<User_Task> usertaskCompletelist = _userTaskService.GetById(userId);
 
             HashSet<int> favIds = new HashSet<int>(usertaskCompletelist.Select(s => s.TaskId));
-            IEnumerable<Task> tskOfCurrentUser = unitOfWork.TaskRepository.Get().Where(m => favIds.Contains(m.TaskId)).ToList();
+            IEnumerable<Task> tskOfCurrentUser = _taskService.GetByTaskId(favIds);
+            IEnumerable<TaskViewModel> tskList = Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tskOfCurrentUser);
 
             ViewBag.TaskCount = usertaskCompletelist.Select(x => x.CompletionStatus.Equals(true)).Count();
-
             ViewBag.TotalTaskCompleted = usertaskCompletelist.Count();
-
-            IEnumerable<Task_Timing> tskTiming = unitOfWork.TaskTimingRepository.Get();
-
+            IEnumerable<Task_Timing> tskTiming = _taskTimingService.GetTask();
             ViewBag.TotalMonths = usertaskCompletelist.Select(s => s.Task.TimeMonth).Distinct();
-
             ViewBag.TaskTiming = tskTiming;
 
-            return View(tskOfCurrentUser);
+            //var abc = usertaskCompletelist.Select(s => s.Task.TimeMonth).Distinct();
+
+            //foreach (int i in ViewBag.TotalMonths)
+            //{
+            //    IEnumerable<Task_Timing>
+            //    tskOfCurrentUser.Select(x => abc.Contains(x.TimeMonth)
+            //}
+            
+            //    _taskRepository.Get().Where(m => timeInMonth.Contains(Convert.ToInt32(m.TimeMonth))).ToList();
+
+
+            //ViewBag.TotalTaskCountAccPerMonth = tskOfCurrentUser.Select(x => x.TimeMonth).Distinct().ToList().Count();
+            //ViewBag.CompletedTaskAccPerMonth = tskOfCurrentUser.Select(x => x.CompletionStatus).Count();
+
+            return View(tskList);
         }
 
         //To get data of task
         [HttpGet]
         public JsonResult ChecklistGetTaskById(int taskId)
         {
-            ChicadressEntities context = new ChicadressEntities();
-            context.Configuration.ProxyCreationEnabled = false;
-            Task tsk = context.Tasks.Find(taskId);
-            return Json(tsk, JsonRequestBehavior.AllowGet);
+            Task task = _taskService.GetByTaskId(taskId);
+            var result = Json(new { TaskId = task.TaskId, Title = task.Title, Description = task.Description }, JsonRequestBehavior.AllowGet);
+            return result;
         }
 
-        public ActionResult SetTaskCompletionStatus(int taskId)
+        public ActionResult SetTaskCompletionStatus(int taskId, bool checkStatus)
         {
-            var user = (User)ViewData["userSession"];
+            UserViewModel user = (UserViewModel)System.Web.HttpContext.Current.Session["userSession"];
             var userId = user.Id;
 
-            IEnumerable<User_Task> usertask = unitOfWork.UserTaskRepository.Get().Where(a => a.UserId.Equals(userId) && a.TaskId.Equals(taskId));
-            var utsk = usertask as User_Task;
-            unitOfWork.UserTaskRepository.Update(utsk);
-            unitOfWork.Save();
+            User_Task usertask = _userTaskService.GetByUserIdTaskId(userId, taskId);
+            usertask.CompletionStatus = checkStatus;
+            _userTaskService.Update(usertask);
 
-            IEnumerable<Task> task = unitOfWork.TaskRepository.Get().Where(a => a.UserId.Equals(userId) && a.TaskId.Equals(taskId));
-            var tsk = task as Task;
-            unitOfWork.TaskRepository.Update(tsk);
-            unitOfWork.Save();
+            Task task = _taskService.GetByUserIdTaskId(userId, taskId);
+            task.CompletionStatus = checkStatus;
+            _taskService.UpdateTask(task);
 
             return RedirectToAction("Checklist", "Dashboard");
         }
 
         // DELETE: /User/Delete
-        public ActionResult DeleteTask(int? taskId)
+        public ActionResult DeleteTask(int taskId)
         {
-            unitOfWork.TaskRepository.Delete(taskId);
-            unitOfWork.Save();
+            UserViewModel user = (UserViewModel)System.Web.HttpContext.Current.Session["userSession"];
+            var userId = user.Id;
+
+            _taskService.DeleteById(taskId);
+            _userTaskService.DeleteByUserIdandTaskId(userId, taskId);
             return RedirectToAction("Checklist", "Dashboard");
         }
 
@@ -89,14 +140,26 @@ namespace ChicadresseSite.Controllers
             Task tsk = new Task();
             tsk.Title = Convert.ToString(form["InputEmail1"]);
             tsk.Description = Convert.ToString(form["comment"]);
+            tsk.TimeMonth = Convert.ToInt32(form["timemonthid"]);
             tsk.CompletionStatus = false;
+            int timemonth = Convert.ToInt32(tsk.TimeMonth);
 
-            var user = (User)ViewData["userSession"];
+            UserViewModel user = (UserViewModel)System.Web.HttpContext.Current.Session["userSession"];
             tsk.UserId = user.Id;
-            //tsk.TimeMonth = 
+            if (timemonth > -1)
+            {
+                Task_Timing data = _taskTimingService.GetByTimeMonth(tsk.TimeMonth);
+                tsk.TimingId = data.TimingId;
+            }
+            Task newTask = _taskService.AddTask(tsk);
 
-            unitOfWork.TaskRepository.Insert(tsk);
-            unitOfWork.Save();
+            User_Task usrTsk = new User_Task()
+            {
+                UserId = user.Id,
+                TaskId = newTask.TaskId,
+                CompletionStatus = false
+            };
+            _userTaskService.Insert(usrTsk);
 
             return RedirectToAction("Checklist", "Dashboard");
         }
@@ -106,57 +169,54 @@ namespace ChicadresseSite.Controllers
         public ActionResult ChecklistEditRun(FormCollection form)
         {
             int id = Convert.ToInt32(form["taskId"]);
-            Task tsk = unitOfWork.TaskRepository.Get().Where(a => a.TaskId.Equals(id)).FirstOrDefault();
-            tsk.Title = Convert.ToString(form["Nombre"]);
-            tsk.TimingId = Convert.ToInt32(form["Period"]);
-            tsk.CategoryId = Convert.ToInt32(form["Categoria"]);
-            tsk.Description = Convert.ToString(form["Notas"]);
+            Task tsk = _taskService.GetByTaskId(id);
+            tsk.Title = Convert.ToString(form["InputEmail1"]);
+            tsk.Description = Convert.ToString(form["comment"]);
 
-            var user = (User)ViewData["userSession"];
-            tsk.UserId = user.Id;
-
-            unitOfWork.TaskRepository.Update(tsk);
-            unitOfWork.Save();
-
+            _taskService.UpdateTask(tsk);
             return RedirectToAction("Checklist", "Dashboard");
         }
 
         //Called on modal save changes in mywedding/index page
         public ActionResult WeddingRun(HttpPostedFileBase foto1, HttpPostedFileBase foto2)
         {
-            var email = ViewData["userEmail"];
-            User user = unitOfWork.UserRepository.Get().Where(a => a.Email.Equals(email)).FirstOrDefault();
+            UserViewModel usermodel = (UserViewModel)System.Web.HttpContext.Current.Session["userSession"];
+            var email = usermodel.Email;
+
+            User user = _userService.GetUserByEmail(email);
             if (foto1 != null)
             {
-                var path = common.testUpload(foto1);
+                var path = cdh.TestUpload(foto1);
                 user.MyPic = path;
             }
             if (foto2 != null)
             {
-                var path2 = common.testUpload(foto2);
+                var path2 = cdh.TestUpload(foto2);
                 user.MyPartnerPic = path2;
             }
 
-            unitOfWork.UserRepository.Update(user);
-            unitOfWork.Save();
+            _userService.UpdateUser(user);
             return RedirectToAction("Index", "Dashboard");
         }
 
         // GET: Dashbord Prestataires
         public ActionResult Prestataires()
         {
-            var user = (User)ViewData["userSession"];
+            UserViewModel user = (UserViewModel)System.Web.HttpContext.Current.Session["userSession"];
             var userId = user.Id;
 
-            IEnumerable<User_FavouriteBusinessUser> favouriteList = unitOfWork.UserFavouriteBusinessRepository.Get().Where(a => a.UserId.Equals(userId));
-            IEnumerable<Business_User> businessUsercompletelist = unitOfWork.BusinessUserRepository.Get();
+            IEnumerable<User_FavouriteBusinessUser> favouriteList = _userFavouriteBusinessService.GetByUserId(userId);
+            IEnumerable<Business_User> businessUsercompletelist = _businessUserService.Get();
 
             HashSet<int> favIds = new HashSet<int>(favouriteList.Select(s => s.BusinessUserId));
             IEnumerable<Business_User> supplierList = businessUsercompletelist.Where(m => favIds.Contains(m.BusinessUserId)).ToList();
 
-            ViewBag.SupplierCount = supplierList.Count();
-            return View(supplierList);
+            IEnumerable<BusinessUserViewModel> supplierModel = Mapper.Map<IEnumerable<Business_User>, IEnumerable<BusinessUserViewModel>>(supplierList);
+            ViewBag.SupplierCount = supplierModel.Count();
+            return View(supplierModel);
         }
+
+        #endregion
 
     }
 }

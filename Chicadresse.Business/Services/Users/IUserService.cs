@@ -8,5 +8,13 @@ namespace Chicadresse.Business.Services
         User GetUser(string email, string password);
 
         IEnumerable<User> GetUsers();
+
+        User GetUserById(int id);
+
+        void AddUser(User obj);
+
+        void UpdateUser(User obj);
+
+        User GetUserByEmail(string email);
     }
 }

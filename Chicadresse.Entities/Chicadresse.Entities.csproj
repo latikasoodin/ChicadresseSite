@@ -114,7 +114,7 @@
     <Compile Include="Domain\User.cs">
       <DependentUpon>Chicadresse.tt</DependentUpon>
     </Compile>
-    <Compile Include="Domain\UserActivation.cs">
+    <Compile Include="Domain\User_Activation.cs">
       <DependentUpon>Chicadresse.tt</DependentUpon>
     </Compile>
     <Compile Include="Domain\User_FavouriteBusinessUser.cs">
@@ -133,6 +133,7 @@
       <DependentUpon>Chicadresse.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BusinessUserViewModel.cs" />
     <Compile Include="ViewModels\GuestListViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />

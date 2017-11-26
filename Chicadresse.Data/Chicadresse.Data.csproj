@@ -66,8 +66,20 @@
     </Compile>
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BusinessUser\BusinessUserRepository.cs" />
+    <Compile Include="Repositories\BusinessUser\IBusinessUserRepository.cs" />
+    <Compile Include="Repositories\Tasks\ITaskRepository.cs" />
+    <Compile Include="Repositories\Tasks\TaskRepository.cs" />
+    <Compile Include="Repositories\TaskTiming\ITaskTimingRepository.cs" />
+    <Compile Include="Repositories\TaskTiming\TaskTimingRepository.cs" />
+    <Compile Include="Repositories\UserActivation\IUserActivationRepository.cs" />
+    <Compile Include="Repositories\UserActivation\UserActivationRepository.cs" />
+    <Compile Include="Repositories\UserFavouriteBusiness\IUserFavouriteBusinessRepository.cs" />
+    <Compile Include="Repositories\UserFavouriteBusiness\UserFavouriteBusinessRepository.cs" />
     <Compile Include="Repositories\Users\IUserRepository.cs" />
     <Compile Include="Repositories\Users\UserRepository.cs" />
+    <Compile Include="Repositories\UserTasks\IUserTaskRepository.cs" />
+    <Compile Include="Repositories\UserTasks\UserTaskRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>

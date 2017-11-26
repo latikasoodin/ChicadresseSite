@@ -9,11 +9,12 @@ namespace Chicadresse.Entities.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Please Enter Email Address")]
+        [RegularExpression(@"^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$",
+        ErrorMessage = "Please Enter Correct Email Address")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Enter Password")]
         public string Password { get; set; }
     }
 }

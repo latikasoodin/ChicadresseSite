@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chicadresse.Data.Base
 {
@@ -47,15 +46,25 @@ namespace Chicadresse.Data.Base
             return dbSet.Find(id);
         }
 
-        public virtual TEntity Insert(TEntity entity)
+        public virtual void Insert(TEntity entity)
         {
-            return dbSet.Add(entity);
+            dbSet.Add(entity);
+            context.SaveChanges();
+        }
+
+        public virtual TEntity InsertAndReturn(TEntity entity)
+        {
+            TEntity ent = dbSet.Add(entity);
+            context.SaveChanges();
+            return ent;
         }
 
         public virtual TEntity Delete(object id)
         {
             TEntity entityToDelete = dbSet.Find(id);
-            return Delete(entityToDelete);
+            Delete(entityToDelete);
+            context.SaveChanges();
+            return entityToDelete;
         }
 
         public virtual void Delete(Expression<Func<TEntity, bool>> where)
@@ -64,6 +73,7 @@ namespace Chicadresse.Data.Base
             foreach (TEntity obj in entityToDelete)
             {
                 Delete(obj);
+                context.SaveChanges();
             }
         }
 
@@ -73,13 +83,29 @@ namespace Chicadresse.Data.Base
             {
                 dbSet.Attach(entityToDelete);
             }
-            return dbSet.Remove(entityToDelete);
+            dbSet.Remove(entityToDelete);
+            context.SaveChanges();
+            return entityToDelete;
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            try
+            {
+                dbSet.Attach(entityToUpdate);
+                context.Entry(entityToUpdate).State = EntityState.Modified;
+                context.SaveChanges();                
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        var exceptionData = string.Format("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
         }
     }
 }

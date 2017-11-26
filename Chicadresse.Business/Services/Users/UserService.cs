@@ -28,12 +28,31 @@ namespace Chicadresse.Business.Services
         {
             // TODO: Password should be checked based on hash key
             return _userRepository.GetMany(u => u.Email.Equals(email) && u.Password.Equals(password)).FirstOrDefault();
-
         }
 
         public IEnumerable<User> GetUsers()
         {
             return _userRepository.Get();
+        }
+
+        public User GetUserById(int id)
+        {
+            return _userRepository.GetByID(id);
+        }
+
+        public void AddUser(User obj)
+        {
+            _userRepository.Insert(obj);
+        }
+
+        public void UpdateUser(User obj)
+        {
+            _userRepository.Update(obj);
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            return _userRepository.GetMany(u => u.Email.Equals(email)).FirstOrDefault();
         }
 
         #endregion

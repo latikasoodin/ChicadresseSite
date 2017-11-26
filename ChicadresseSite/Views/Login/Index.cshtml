@@ -86,7 +86,7 @@
 </head>
 <body>
 
-    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
     {
         <fieldset>
 
@@ -104,12 +104,12 @@
                                     <i class="logo lginlogo"></i>
                                     <h2 class="login_title">Login to your account</h2>
                                     <p class="login_action">
-                                        Don't have an account? <a class="app" href="">Sign up</a>
+                                        Don't have an account? <a href="@Url.Action("Signup","Login")" class="app">Sign up</a>
                                     </p>
                                     <div class="clearfix"></div>
-                                    @*<button class="loginBtn loginBtn--facebook">Login with Facebook</button>*@
-                                    <fb:login-button class="loginBtn loginBtn--facebook" scope="public_profile,email" onlogin="checkLoginState();">
-                                    </fb:login-button>
+                                    <button class="loginBtn loginBtn--facebook">Login with Facebook</button>
+                                    @*<fb:login-button class="loginBtn loginBtn--facebook" scope="public_profile,email" onlogin="checkLoginState();">
+                                    </fb:login-button>*@
                                     <div class="login-or">
                                         <hr class="hr-or">
                                         <span class="span-or">or</span>
@@ -131,7 +131,7 @@
                                             <input type="submit" value="Log In" class="btn btn-primary btn-block btn_lgn" />
                                         </div>
                                         <p class="login_action_r">
-                                            Are you a professional ? <a class="app" href="">Login for businesses</a>
+                                            Are you a professional ? <a class="app" href="@Url.Action("Login","Business")">Login for businesses</a>
                                         </p>
                                     </form>
                                 </div>
@@ -160,9 +160,22 @@
         });
     </script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             var mySelect = $('#first-disabled2');
         });
     </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            if (window.location.hash == '#alert') {
+                alert("Please check your email to activate your account");
+            }
+            if (window.location.hash == '#accNotActivated') {
+                alert("Account not activated. Please check your email to activate your account");
+            }
+        };
+    </script>
+
 </body>
 </html>
+

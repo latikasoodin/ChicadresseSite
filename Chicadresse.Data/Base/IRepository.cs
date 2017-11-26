@@ -33,8 +33,22 @@ namespace Chicadresse.Data.Base
         /// Inserts a new entity to database.
         /// </summary>
         /// <param name="entity">Entity to be inserted.</param>
+        /// <returns></returns>
+        void Insert(TEntity entity);
+
+        /// <summary>
+        /// Inserts a new entity to database.
+        /// </summary>
+        /// <param name="entity">Entity to be inserted.</param>
         /// <returns>Inserted entity.</returns>
-        TEntity Insert(TEntity entity);
+        TEntity InsertAndReturn(TEntity entity);
+
+        /// <summary>
+        /// Deletes an entity from database.
+        /// </summary>
+        /// <param name="IdToDelete">Id to be deleted.</param>
+        /// <returns>Deleted by ID.</returns>
+        TEntity Delete(object id);
 
         /// <summary>
         /// Deletes an entity from database.

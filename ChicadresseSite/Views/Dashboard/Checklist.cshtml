@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<TaskViewModel>
 @{
     ViewBag.Title = "Checklist";
 }
@@ -28,7 +28,7 @@
                                     </h3>
                                     <span>
                                         @ViewBag.TotalTaskCompleted taches de @ViewBag.TaskCount effectuer
-                                        <a href="javascript:void(0);" class="span_btn" id="a-tool-modal" data-id="@m">ajouter une tache</a>
+                                        <a href="javascript:void(0);" class="span_btn" id="a-tool-modal" onclick="return addnewtask(@m);">ajouter une tache</a>  @*data-id="@m"*@
                                     </span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -38,15 +38,23 @@
                                         if (item.TimeMonth == m)
                                         {
                                             <li class="list-group-item clearfix">
-                                                <a href="javascript:void">
-                                                    <h3><i class="rclock_icon"></i>@item.Title</h3><input type="hidden" value="@item.TaskId" />
+                                                <a href="javascript:void(0);" id="checkTaskStat">
+                                                    @if (item.CompletionStatus == true)
+                                                    {
+                                                        <h3 class="lline"><i class="right_icon"></i>@item.Title</h3><input type="hidden" value="@item.TaskId" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <h3><i class="rclock_icon"></i>@item.Title</h3><input type="hidden" value="@item.TaskId" />
+                                                    }
                                                 </a>
                                                 <ul class="icn_rightlist">
                                                     <li>
                                                         <a href="@Url.Action("DeleteTask", "Dashboard", new { taskId = item.TaskId })"><i class="gst dlt"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="#edit-tool-modal" data-toggle="modal" data-id=@item.TaskId class="open-EditTaskDialog"><i class="gst pencil"></i></a>
+                                                        <a href="javascript:void(0);" id="open-edit-modal" onclick="return edittask(@item.TaskId);"><i class="gst pencil"></i></a>
+                                                        @*<a href="#edit-tool-modal" data-toggle="modal" data-id=@item.TaskId class="open-EditTaskDialog"><i class="gst pencil"></i></a>*@
                                                     </li>
                                                 </ul>
 
@@ -88,161 +96,9 @@
     </div>
 </div>
 
-@*<!-- Add New Task Modal -->
-<div class="modal fade" id="tool-modal" role="dialog">
-    <div class="modal-dialog" style="left:0%;">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="header" style="min-height:20px;">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                <h2>Add New Task</h2>
-            </div>
-            <form id="frmToolLayer" name="frmToolLayer" class="pure-form pure-form-stacked" action="/Dashboard/ChecklistAddRun" target="frameToolLayer" method="post">
-                <div class="modal-body p20">
-                    <div class="pure-control-group mb10">
-                        <div class="pure-ui">
-                            <label for="BudgetCateg" class="pure-u-1-4">Task <span class="required">*</span></label>
-                            <input type="text" name="Nombre" id="Nombre" size="40" maxlength="80">
-                        </div>
-                    </div>
-
-                    <label for="Period">Timing <span class="required">*</span></label>
-
-                    <div class="select-fake pure-u-1 mb20" style="max-width:498px;">
-                        <select name="Period" id="Period" class="pure-u-1" style="max-width:498px;">
-                            <option value="0">-- Unclassified --</option>
-                            <option value="1">From 10 to 12 months</option>
-                            <option value="2">From 7 to 9 months</option>
-                            <option value="3">From 4 to 6 months</option>
-                            <option value="4">From 2 to 3 months</option>
-                            <option value="5">The last month</option>
-                            <option value="6">2 weeks</option>
-                            <option value="7">Last week</option>
-                            <option value="8">Last day</option>
-                            <option value="9">Wedding day</option>
-                            <option value="10">After the wedding</option>
-                        </select>
-                    </div>
-
-                    <label for="Categoria" class="pure-u-1-4">Category <span class="required">*</span></label>
-                    <div class="select-fake pure-u-1" style="max-width:498px;">
-                        <select name="Categoria" id="CategoriaCreated" class="pure-u-1" style="max-width:498px;">
-                            <option value="0">-- Unclassified --</option>
-                            <option value="13">Planning</option>
-                            <option value="14">Legal processes</option>
-                            <option value="3">Ceremony</option>
-                            <option value="1">Reception</option>
-                            <option value="12">Music</option>
-                            <option value="6">Wedding invitations</option>
-                            <option value="19">Wedding favours</option>
-                            <option value="4">Flowers and Decoration</option>
-                            <option value="5">Photography and Video</option>
-                            <option value="15">Transport</option>
-                            <option value="8">Jewellery</option>
-                            <option value="16">Bridal accessories</option>
-                            <option value="20">Groom's accessories</option>
-                            <option value="2">Health and beauty</option>
-                            <option value="11">Honeymoon</option>
-                            <option value="9">Gift list</option>
-                            <option value="18">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="pt10">
-                        <label for="Notas" class="dblock">Description</label>
-                        <textarea rows="6" class="app-tools-checklist-new-desc pure-input-1 mt10" name="Notas" id="Notas" style="max-width:498px;"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary btn-medium" value="Add&nbsp;Task">
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div>
-
-<!-- Edit Task Modal -->
-<div class="modal fade" id="edit-tool-modal" role="dialog">
-    <div class="modal-dialog" style="left:0%;">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="header" style="min-height:20px;">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                <h2>Edit Task</h2>
-            </div>
-            <form id="frmToolLayer" name="frmToolLayer" class="pure-form pure-form-stacked" action="/Dashboard/ChecklistEditRun/" target="frameToolLayer" method="post">
-                <div class="modal-body p20">
-                    <div class="pure-control-group mb10">
-                        <div class="pure-ui">
-                            <label for="BudgetCateg" class="pure-u-1-4">Task <span class="required">*</span></label>
-                            <input type="text" name="Nombre" id="Nombre" size="40" maxlength="80">
-                            @Html.Hidden("taskId")
-                        </div>
-                    </div>
-
-                    <label for="Period">Timing <span class="required">*</span></label>
-
-                    <div class="select-fake pure-u-1 mb20" style="max-width:498px;">
-                        <select name="Period" id="Period" class="pure-u-1" style="max-width:498px;">
-                            <option value="0">-- Unclassified --</option>
-                            <option value="1">From 10 to 12 months</option>
-                            <option value="2">From 7 to 9 months</option>
-                            <option value="3">From 4 to 6 months</option>
-                            <option value="4">From 2 to 3 months</option>
-                            <option value="5">The last month</option>
-                            <option value="6">2 weeks</option>
-                            <option value="7">Last week</option>
-                            <option value="8">Last day</option>
-                            <option value="9">Wedding day</option>
-                            <option value="10">After the wedding</option>
-                        </select>
-                    </div>
-
-                    <label for="Categoria" class="pure-u-1-4">Category <span class="required">*</span></label>
-                    <div class="select-fake pure-u-1" style="max-width:498px;">
-                        <select name="Categoria" id="CategoriaCreated" class="pure-u-1" style="max-width:498px;">
-                            <option value="0">-- Unclassified --</option>
-                            <option value="13">Planning</option>
-                            <option value="14">Legal processes</option>
-                            <option value="3">Ceremony</option>
-                            <option value="1">Reception</option>
-                            <option value="12">Music</option>
-                            <option value="6">Wedding invitations</option>
-                            <option value="19">Wedding favours</option>
-                            <option value="4">Flowers and Decoration</option>
-                            <option value="5">Photography and Video</option>
-                            <option value="15">Transport</option>
-                            <option value="8">Jewellery</option>
-                            <option value="16">Bridal accessories</option>
-                            <option value="20">Groom's accessories</option>
-                            <option value="2">Health and beauty</option>
-                            <option value="11">Honeymoon</option>
-                            <option value="9">Gift list</option>
-                            <option value="18">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="pt10">
-                        <label for="Notas" class="dblock">Description</label>
-                        <textarea rows="6" class="app-tools-checklist-new-desc pure-input-1 mt10" name="Notas" id="Notas" style="max-width:498px;"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary btn-medium" value="Edit&nbsp;Task">
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div>*@
-
-
 
 <div id="edit-tool-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="left:0%;">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
@@ -253,7 +109,6 @@
                 </button>
                 <div class="ttl_box new_ttl">
                     <h3><i class="vndr i_hotel_restaurant_166"></i>Editer une taches</h3>
-                    <input type="hidden" id="modelId" />
                 </div>
             </div>
             <!-- Modal Body -->
@@ -261,14 +116,14 @@
                 <form role="form" action="/Dashboard/ChecklistEditRun" method="post">
                     <div class="form-group">
                         <label for="InputEmail1">Nom de la Taches</label>
-                        <input type="text" class="form-control"
-                               id="InputEmail1" />
+                        <input type="text" class="form-control" id="InputEmail1" name="InputEmail1" />
+                        <input type="hidden" id="taskId" name="taskId" />
                     </div>
                     <div class="form-group">
                         <label for="Description">Description</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-default modelbtn">Editer une taches</button>
+                    <input type="submit" class="btn btn-default modelbtn" value="Editer une taches" />
                 </form>
             </div>
         </div>
@@ -277,7 +132,7 @@
 
 <!-- Modal -->
 <div id="tool-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="left:0%;">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
@@ -292,17 +147,18 @@
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
-                <form role="form" action="/Dashboard/ChecklistAddRun" method="post">
+                <form role="form" id="frmToolLayer" name="frmToolLayer" action="/Dashboard/ChecklistAddRun" target="frameToolLayer" method="post">
                     <div class="form-group">
                         <label for="InputEmail1">Nom de la Taches</label>
                         <input type="text" class="form-control"
-                               id="InputEmail1" />
+                               id="InputEmail1" name="InputEmail1" />
+                        <input type="hidden" id="timemonthid" name="timemonthid" />
                     </div>
                     <div class="form-group">
                         <label for="Description">Description</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-default modelbtn">ajouter la tache</button>
+                    <input type="submit" class="btn btn-default modelbtn" value="Ajouter la tache" />
                 </form>
             </div>
         </div>
@@ -310,22 +166,44 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#a-tool-modal").click(function () {
-            debugger;
-            var myBookId = $(this).data('id');
-            $(".modal-body #modelId").val(myBookId);
-            $("#tool-modal").modal();
+    function addnewtask(timemonthId) {
+        debugger;
+        $(".modal-body #timemonthid").val(timemonthId);
+        $("#tool-modal").modal();
+    }
+
+    function edittask(taskId) {
+        debugger;
+        $.ajax({
+            url: '@Url.Action("ChecklistGetTaskById", "Dashboard")',
+            type: 'GET',
+            dataType: "json",
+            data: { taskId: taskId },
+            success: function (result) {
+                debugger;
+                $(".modal-body #InputEmail1").val(result.Title);
+                $(".modal-body #comment").val(result.Description);
+                $(".modal-body #taskId").val(result.TaskId);
+
+                $("#edit-tool-modal").modal();
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
         });
+    }
 
-        $('a').click(function () {
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $('.rclock_icon').click(function () {
             debugger;
-            $(this).find('i').toggleClass('right_icon rclock_icon');
-
-            var text = $(this)[0].text;
-            var taskId = parseInt($(this)[0].children[1].value);
-
-            var icon = $(this).find('i')[0].className;
+            $(this).toggleClass('right_icon rclock_icon');
+            $(this).parent().addClass('lline');
+            var taskId = $(this).parent().siblings()[0].value;
+            var icon = $(this)[0].className;
             var checkStatus = false;
             if (icon == "right_icon")
                 checkStatus = true;
@@ -333,7 +211,7 @@
                 url: '@Url.Action("SetTaskCompletionStatus", "Dashboard")',
                 type: 'POST',
                 dataType: "json",
-                data: { taskId: taskId },
+                data: { taskId: taskId, checkStatus: checkStatus },
                 success: function (result) {
                     debugger;
 
@@ -342,35 +220,11 @@
                     alert(response.responseText);
                 }
             });
-
-
         });
 
         $(".progress-bar").css("width", '@ViewBag.TotalTaskCompleted');
     });
 
-    $(document).on("click", ".open-EditTaskDialog", function () {
-        var taskId = $(this).data('id');
-
-        $.ajax({
-            url: '@Url.Action("ChecklistGetTaskById", "Dashboard")',
-            type: 'GET',
-            dataType: "json",
-            data: { taskId: taskId },
-            success: function (result) {
-                debugger;
-                $(".modal-body #Nombre").val(result.Title);
-                $(".modal-body #Period").val(result.TimingId);
-                $(".modal-body #Categoria").val(result.CategoryId);
-                $(".modal-body #Notas").val(result.Description);
-
-                $(".modal-body #taskId").val(result.TaskId);
-            },
-            error: function (response) {
-                alert(response.responseText);
-            }
-        });
-    });
 </script>
 
 

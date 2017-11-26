@@ -35,8 +35,8 @@ namespace Chicadresse.Entities.Domain
         public virtual Business_User Business_User { get; set; }
         public virtual Task_Timing Task_Timing { get; set; }
         public virtual Tasks_Category Tasks_Category { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Task> User_Task { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -3,36 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DAL.UnitOfWork;
-using DAL;
+using Chicadresse.Business.Services;
+using Chicadresse.Entities.Domain;
+using Chicadresse.Entities.ViewModels;
 
 namespace ChicadresseSite.Controllers
 {
     public class BusinessController : Controller
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        #region Fields
         
+        #endregion
+
+        #region ctor
+        
+        #endregion
+
+        #region Actions
+
         // Login business
         public ActionResult Login()
         {
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(Business_User objUser)
-        {
-            if (objUser != null)
-            {
-                var obj = unitOfWork.BusinessUserRepository.Get().Where(a => a.Username.Equals(objUser.Username) && a.Password.Equals(objUser.Password)).FirstOrDefault();
-                if (obj != null)
-                {
-                    System.Web.HttpContext.Current.Session["businessUserSession"] = obj;
-                    return RedirectToAction("MonEspacePro", "MonCompte", obj);
-                }
-            }
-            return View(objUser);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Login(Business_User objUser)
+        //{
+        //    if (objUser != null)
+        //    {
+        //        var obj = unitOfWork.BusinessUserRepository.Get().Where(a => a.Username.Equals(objUser.Username) && a.Password.Equals(objUser.Password)).FirstOrDefault();
+        //        if (obj != null)
+        //        {
+        //            System.Web.HttpContext.Current.Session["businessUserSession"] = obj;
+        //            return RedirectToAction("MonEspacePro", "MonCompte", obj);
+        //        }
+        //    }
+        //    return View(objUser);
+        //}
 
         // Signup business
         public ActionResult SignupStep1()
@@ -123,7 +132,7 @@ namespace ChicadresseSite.Controllers
         //}
 
 
-        
 
+        #endregion
     }
 }
