@@ -9,5 +9,7 @@ namespace Chicadresse.Data.UnitOfWork
     public interface IUnitOfWork
     {
         ChicadressEntities Context { get; }
+
+        void Save();
     }
 }

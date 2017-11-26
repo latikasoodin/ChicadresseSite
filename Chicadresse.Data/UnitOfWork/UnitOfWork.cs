@@ -28,7 +28,7 @@ namespace Chicadresse.Data.UnitOfWork
 
         public void Save()
         {
-            _context.SaveChanges();
+            Context.SaveChanges();
         }
 
         private bool disposed = false;
@@ -39,8 +39,11 @@ namespace Chicadresse.Data.UnitOfWork
 
             if (disposing)
             {
-                //Free any other managed objects here. 
-                _context.Dispose();
+                if (_context != null)
+                {
+                    //Free any other managed objects here. 
+                    _context.Dispose();
+                }
             }
 
             // Free any unmanaged objects here. 

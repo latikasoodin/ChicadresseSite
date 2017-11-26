@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Chicadresse.Business.DependencyModule;
+using Chicadresse.Core.Caching;
 using ChicadresseSite.DependencyModule;
 using ChicadresseSite.Mappings;
 using System.Reflection;
@@ -22,6 +23,9 @@ namespace ChicadresseSite.App_Start
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterFilterProvider();
+            builder.RegisterType(typeof(MemoryCacheManager)).As(typeof(ICacheManager)).InstancePerLifetimeScope();
+
+            builder.RegisterSource(new ViewRegistrationSource());
 
             builder.RegisterModule(new ServiceModule());
             builder.RegisterModule(new EFModule());

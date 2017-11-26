@@ -1,0 +1,110 @@
+﻿@using Chicadresse.Entities.Domain;
+@model GuestViewModel
+@{
+    var groups = CacheServie.GetEntities<Group>(g => g.IsDeleted == false).Select(g =>
+        new SelectListItem
+        {
+            Text = g.Name,
+            Value = g.Id.ToString()
+        }).ToList();
+
+    groups.Insert(0, new SelectListItem
+    {
+        Text = "Selectioner groupe",
+        Value = ""
+    });
+
+    var tables = CacheServie.GetEntities<Table>(t => t.IsDeleted == false).Select(g =>
+            new SelectListItem
+            {
+                Text = g.TableName,
+                Value = g.Id.ToString()
+            }).ToList();
+
+    tables.Insert(0, new SelectListItem
+    {
+        Text = "Selectioner tables",
+        Value = ""
+    });
+
+    var attendances = CacheServie.GetEntities<Attendance>(a => a.IsDeleted == false).Select(g =>
+            new SelectListItem
+            {
+                Text = g.Name,
+                Value = g.Id.ToString()
+            }).ToList();
+}
+
+
+<div class="modal-dialog" style="left:0%">
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <div class="ttl_box new_ttl">
+                <h3><i class="vndr i_hotel_restaurant_166"></i> Ajouter invité(e)</h3>
+            </div>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body">
+            @using (Ajax.BeginForm("Save", "Invites", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "guest-table",
+                OnSuccess = "Invites.CloseModal"
+            }, new { id = "frmGuest" }))
+            {
+                @Html.HiddenFor(model => model.AttendanceId)
+                @Html.HiddenFor(model => model.Id)
+                <div class="form-group col-sm-6">
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "Nom" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+                <div class="form-group col-sm-6">
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Prenom" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+                <div class="form-group col-sm-12">
+                    @Html.DropDownListFor(model => model.GroupId, groups, new { @class = "selectpicker" })
+                    @Html.ValidationMessageFor(model => model.GroupId)
+                </div>
+                <div class="form-group col-sm-12">
+                    @Html.DropDownListFor(model => model.TableId, tables, new { @class = "selectpicker" })
+                    @Html.ValidationMessageFor(model => model.TableId)
+                </div>
+                <a href="javascript:void(0);" id="click_advance"><i class="fa fa-plus"></i> Ajouter un accompagnant</a>
+                <div id="display_advance">
+                    @if (Model.Companions != null && Model.Companions.Count > 0)
+                    {
+                        for (var i = 0; i < Model.Companions.Count(); i++)
+                        {
+                            <div class="row">
+                                <input type="hidden" value="@i" name="Companions.Index" />
+                                @Html.HiddenFor(m=>m.Companions[i].Id)
+                                <div class="row-remove"> <i class="fa fa-minus"></i></div>
+                                <div class="form-group col-sm-6">
+                                    @Html.TextBoxFor(m => m.Companions[i].FirstName, new { @class = "form-control", placeholder = "Nom" })
+                                    @Html.ValidationMessageFor(m => m.Companions[i].FirstName)
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    @Html.TextBoxFor(m => m.Companions[i].LastName, new { @class = "form-control", placeholder = "Prenom" })
+                                    @Html.ValidationMessageFor(m => m.Companions[i].LastName)
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix"></div>
+                <div class="npd pull-right">
+                    <button type="submit" class="btn btn-default modelbtn">Garder et ajouter autre</button>
+                </div>
+                <div class="clearfix"></div>
+            }
+        </div>
+    </div>
+</div>
+<script src="~/app/pages/guests.js?t=@DateTime.Now.Ticks"></script>

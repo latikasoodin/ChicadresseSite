@@ -1,7 +1,9 @@
-﻿using Chicadresse.Entities.ViewModels;
+﻿using Chicadresse.Business.Services.Base;
+using Chicadresse.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 
@@ -32,6 +34,9 @@ namespace ChicadresseSite.CustomViewEngine
                 return (UserViewModel)userSession;
             }
         }
+
+        public  ICacheService CacheServie { get; set; }
+
     }
 
     public abstract class BaseWebViewPage : BaseWebViewPage<dynamic>

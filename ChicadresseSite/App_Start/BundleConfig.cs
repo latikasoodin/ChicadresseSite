@@ -9,7 +9,8 @@ namespace ChicadresseSite
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -21,19 +22,19 @@ namespace ChicadresseSite
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                       "~/Scripts/bootstrap-select.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/app/lib/bootstrap/dist/css/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/css/bootstrap.css",
                       "~/Content/css/hover-min.css",
                       "~/Content/css/animate.min.css",
-                      "~/Content/css/bootstrap-select.min.css",
+                       "~/app/lib/bootstrap-select/dist/css/bootstrap-select.css",
                       "~/Content/css/menu.css",
-                      "~/Content/css/font-awesome.min.css",
+                      "~/app/lib/font-awesome/css/font-awesome.min.css",
                       "~/Content/css/demo.css",
-                      "~/Content/css/bootstrap-touch-slider.css",
+                      "~/app/lib/bootstrap-carousel-touch-slider-master/bootstrap-touch-slider.css",
                       "~/Content/css/icon.css",
                       "~/Content/css/style.css",
                       "~/Content/css/responsive.css"));
