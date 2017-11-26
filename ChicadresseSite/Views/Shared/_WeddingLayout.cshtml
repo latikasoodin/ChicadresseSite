@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+
+@section Submenu
+{
+    <section class="sub_menufullwidth">
+        <div class="container">
+            <div class="row">
+                <div class="sub_menu">
+                    <ul class="list_sub_menu">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Dashboard")" class="wed i_rings">mon Mariage</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Dashboard")" class="task i_write_feedback">Profile</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Checklist", "Dashboard")" class="vndr i_hotel_restaurant_16">Taches</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Prestataires", "Dashboard")" class="gst i_live_contest">Prestataires</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Dashboard")" class="tble i_dinner_table">Budget</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Invites")" class="bdg i_official_document">Invites</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Dashboard")" class="drss i_wedding_dress">Tables</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Dashboard")" class="web i_tv_television">Messages</a>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="ttl_box">
+                    <h3><i class="gst i_live_contestt"></i> Trouvez le prestataire de votre choix pres de chez vous</h3>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="serch_box">
+                    <form>
+                        <div class="form-group col-sm-5">
+                            <input type="text" class="form-control" id="teett" placeholder="Que cherchez-vous?" />
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <input type="text" class="form-control" placeholder="Sélcetionnez votre ville" id="teet" />
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-default btnsbmit">Chercher</button>
+                        </div>
+                    </form>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@RenderBody()
+
+@RenderSection("scripts", required: false)
+

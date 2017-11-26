@@ -1,5 +1,9 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/Chicadresse.Core/obj/Debug
+bin
+obj
+*.suo
+.vs
+*.user
+_ReSharper.*
